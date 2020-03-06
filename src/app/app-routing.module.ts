@@ -12,6 +12,10 @@ const routes: Routes = [
   { path: 'register-cpg', loadChildren: () => import('./register-cpg/register-cpg.module').then( m => m.RegisterCpgPageModule) },
   { path: 'view-cpg-admin/:id', loadChildren: () => import('./view-cpg-admin/view-cpg-admin.module').then( m => m.ViewCpgAdminPageModule) },
   { path: 'update-cpg-admin/:id', loadChildren: () => import('./update-cpg-admin/update-cpg-admin.module').then( m => m.UpdateCpgAdminPageModule) },
+  { path: 'vlntr-list', loadChildren: () => import('./vlntr-list/vlntr-list.module').then( m => m.VlntrListPageModule) },
+  { path: 'add-volunteer', loadChildren: () => import('./add-volunteer/add-volunteer.module').then( m => m.AddVolunteerPageModule) },
+  { path: 'view-volunteer/:id', loadChildren: () => import('./view-volunteer/view-volunteer.module').then( m => m.ViewVolunteerPageModule) },
+  { path: 'update-volunteer/:id', loadChildren: () => import('./update-volunteer/update-volunteer.module').then( m => m.UpdateVolunteerPageModule) },
 ];
 
 @NgModule({

@@ -50,7 +50,8 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
     }
   }
 
-  deleteCampaign() {
+  deleteCampaign() 
+  {
     this.fbService.deleteCampaign(this.campaign.id)
     .then(() => 
     {

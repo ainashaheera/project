@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Campaign Application List</ion-title>
+    <ion-title>Volunteer List</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,17 +11,17 @@
   <ion-searchbar></ion-searchbar>
   <ion-list>
     <ion-list-header>
-      <ion-label>Campaigns</ion-label>
+      <ion-label>Volunteers</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let campaign of (campaigns | async)">
+    <ion-item *ngFor="let volunteer of (volunteers | async)">
       <ion-thumbnail slot="start">
         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
       </ion-thumbnail>
       <ion-label>
-        <h2>{{campaign.campaignName}}</h2>
-        <p>{{campaign.description}}</p>
+        <h2>{{volunteer.volunteerName}}</h2>
+        <p>{{volunteer.description}}</p>
       </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-cpg-admin/'+campaign.id">View</ion-button>
+      <ion-button fill="outline" slot="end" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

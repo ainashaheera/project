@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Update Volunteer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Volunteer Name" [(ngModel)]="volunteer.volunteerName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea rows="6" placeholder="Volunteer Description" [(ngModel)]="volunteer.description"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-button color="primary" expand="full" (click)="updateVolunteer()">
+    Update
+  </ion-button>
+</ion-content>

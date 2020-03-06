@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Volunteer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{volunteer.volunteerName}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p align="justify">{{volunteer.description}}</p>
+      <br>
+      <ion-button slot="start" color="warning" [routerLink]="'/update-volunteer/' + volunteer.id">Edit</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteVolunteer()">Delete</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
