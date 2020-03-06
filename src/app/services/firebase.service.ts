@@ -63,21 +63,21 @@ export class FirebaseService
   {
     return this.campaignCollection.doc(campaign.id).update
     ({
-      status: campaign.status,
+      //status: campaign.status,
       description: campaign.description,
-      image: campaign.description,
-      organizationName: campaign.description,
-      campaignName: campaign.description,
-      category: campaign.description,
-      registrationNum: campaign.description,
-      document: campaign.description,
-      textExmpNum: campaign.description,
-      bankName: campaign.description,
-      bankAccNum: campaign.description,
-      website: campaign.description,
-      email: campaign.description,
-      phone: campaign.description,
-      donationTarget: campaign.description,  
+      //image: campaign.description,
+      organizationName: campaign.organizationName,
+      campaignName: campaign.campaignName,
+      category: campaign.category,
+      registrationNum: campaign.registrationNum,
+      //document: campaign.description,
+      //textExmpNum: campaign.description,
+      bankName: campaign.bankName,
+      bankAccNum: campaign.bankAccNum,
+      website: campaign.website,
+      email: campaign.email,
+      phone: campaign.phone,
+      donationTarget: campaign.donationTarget,  
     })
   }
 

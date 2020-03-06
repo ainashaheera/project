@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 
 @Component({
-  selector: 'app-view-cpg-admin',
-  templateUrl: './view-cpg-admin.page.html',
-  styleUrls: ['./view-cpg-admin.page.scss'],
+  selector: 'app-update-cpg-admin',
+  templateUrl: './update-cpg-admin.page.html',
+  styleUrls: ['./update-cpg-admin.page.scss'],
 })
-export class ViewCpgAdminPage implements OnInit, AfterViewInit 
+export class UpdateCpgAdminPage implements OnInit, AfterViewInit 
 {
   campaign: Campaign =
   {
@@ -50,11 +50,10 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
     }
   }
 
-  deleteCampaign() {
-    this.fbService.deleteCampaign(this.campaign.id)
-    .then(() => 
-    {
-      this.router.navigateByUrl('/');
+  updateCampaign() {
+    this.fbService.updateCampaign(this.campaign)
+    .then(() => {
+     this.router.navigate(['/']);
     }, err => {
     });
   }
