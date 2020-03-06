@@ -3,11 +3,11 @@ import { Router } from "@angular/router";
 import { AuthenticationService } from "../shared/authentication-service";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class SignupPage implements OnInit {
 
   constructor
   (
