@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register Campaign</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-textarea rows="6" placeholder="Campaign Description" [(ngModel)]="campaign.description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Campaign Name" [(ngModel)]="campaign.campaignName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Organization Name" [(ngModel)]="campaign.organizationName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Website Link" [(ngModel)]="campaign.website"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Phone Number" [(ngModel)]="campaign.phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Email" [(ngModel)]="campaign.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-select placeholder="Category" [(ngModel)]="campaign.category">
+        <ion-select-option value="Advocacy">Advocacy</ion-select-option>
+        <ion-select-option value="Animals">Animals</ion-select-option>
+        <ion-select-option value="Children">Children</ion-select-option>
+        <ion-select-option value="Culture">Culture</ion-select-option>
+        <ion-select-option value="Disable People">Disable People</ion-select-option>
+        <ion-select-option value="Education">Education</ion-select-option>
+        <ion-select-option value="Environment">Environment</ion-select-option>
+        <ion-select-option value="Health">Health</ion-select-option>
+        <ion-select-option value="Orang Asli">Orang Asli</ion-select-option>
+        <ion-select-option value="Refugees">Refugees</ion-select-option>
+        <ion-select-option value="Senior Citizens">Senior Citizens</ion-select-option>
+        <ion-select-option value="Single Parents">Single Parents</ion-select-option>
+        <ion-select-option value="Support Group">Support Group</ion-select-option>
+        <ion-select-option value="Women">Women</ion-select-option>
+        <ion-select-option value="Youth">Youth</ion-select-option>
+        <ion-select-option value="Special Enterprise">Special Enterprise</ion-select-option>
+        <ion-select-option value="Government Agency">Government Agency</ion-select-option>
+        <ion-select-option value="Homeless Services">Homeless Services</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Registration Number" [(ngModel)]="campaign.registrationNum"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Bank Name" [(ngModel)]="campaign.bankName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Bank Account Num" [(ngModel)]="campaign.bankAccNum"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input placeholder="Donation Target" [(ngModel)]="campaign.donationTarget"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button color="primary" expand="full" (click)="addCampaign()">
+    Register
+  </ion-button>
+</ion-content>

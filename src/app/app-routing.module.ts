@@ -8,6 +8,18 @@ const routes: Routes = [
   { path: 'signup', loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule) },
   { path: 'verify-email', loadChildren: () => import('./verify-email/verify-email.module').then( m => m.VerifyEmailPageModule) },
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule) },
+  {
+    path: 'cpg-app-list',
+    loadChildren: () => import('./cpg-app-list/cpg-app-list.module').then( m => m.CpgAppListPageModule)
+  },
+  {
+    path: 'register-cpg',
+    loadChildren: () => import('./register-cpg/register-cpg.module').then( m => m.RegisterCpgPageModule)
+  },
+  {
+    path: 'view-cpg-admin',
+    loadChildren: () => import('./view-cpg-admin/view-cpg-admin.module').then( m => m.ViewCpgAdminPageModule)
+  },
 ];
 
 @NgModule({
