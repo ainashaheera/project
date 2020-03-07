@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'add-volunteer', loadChildren: () => import('./add-volunteer/add-volunteer.module').then( m => m.AddVolunteerPageModule) },
   { path: 'view-volunteer/:id', loadChildren: () => import('./view-volunteer/view-volunteer.module').then( m => m.ViewVolunteerPageModule) },
   { path: 'update-volunteer/:id', loadChildren: () => import('./update-volunteer/update-volunteer.module').then( m => m.UpdateVolunteerPageModule) },
+  { path: 'profile', loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule) },
 ];
 
 @NgModule({

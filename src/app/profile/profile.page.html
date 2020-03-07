@@ -1,0 +1,35 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>-->
+
+<ion-toolbar>
+  <ion-buttons slot="end">
+    <ion-menu-button *ngIf="authService.userData as user" auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Profile</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row *ngIf="authService.userData as user">
+        <img class="align-self-start mr-5 img-thumbnail rounded-circle" 
+              src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" 
+              alt="{{user.displayName}}">
+        <br>
+        <p><br>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></p>
+        <p>User ID: <strong>{{user.uid}}</strong></p>
+        <p>Email: <strong>{{user.email}}</strong></p>
+        <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
