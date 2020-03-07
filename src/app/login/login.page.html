@@ -7,32 +7,45 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" #email required></ion-input>
-    </ion-item>
+<!--<ion-toolbar>
+  <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-menu-button *ngIf="authService.userData as user" auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+</ion-toolbar>-->
 
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="text" #password required></ion-input>
-    </ion-item>
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
 
-    <ion-row>
-      <ion-col>
-        <ion-button type="submiit" (click)="logIn (email, password)" expand="block">
-          Login
-        </ion-button>
-      </ion-col>
-    </ion-row>
+    <ion-card-content>
+      <ion-item lines="full">
+        <ion-input placeholder="Email" type="text" #email required></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-input placeholder="Password" type="password" #password required></ion-input>
+      </ion-item>
 
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" (click)="authService.GoogleAuth()" expand="block">
-          Login with Google
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submiit" (click)="logIn (email, password)" expand="block">
+            Login
+          </ion-button>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" (click)="authService.GoogleAuth()" expand="block">
+            Login with Google
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,23 +1,33 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="dashboard"></ion-back-button>
     </ion-buttons>
-    <ion-title>Add Volunteer</ion-title>
+    <ion-title>New Volunteer Event</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-input placeholder="Volunteer Name" [(ngModel)]="volunteer.volunteerName"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-textarea rows="6" placeholder="Volunteer Description" [(ngModel)]="volunteer.description"></ion-textarea>
-    </ion-item>
-  </ion-list>
-  <ion-button color="primary" expand="full" (click)="addVolunteer()">
-    Register
-  </ion-button>
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>New Volunteer Event</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Volunteer Name" [(ngModel)]="volunteer.volunteerName"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-textarea rows="6" placeholder="Volunteer Description" [(ngModel)]="volunteer.description"></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="addVolunteer()">Add</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

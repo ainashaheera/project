@@ -45,7 +45,7 @@ export class RegisterCpgPage implements OnInit
     this.fbService.addCampaign(this.campaign)
     .then (() =>
     {
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/dashboard']);
     }, err =>
     {});
   }

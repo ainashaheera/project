@@ -34,7 +34,7 @@ export class AddVolunteerPage implements OnInit
     this.vlService.addVolunteer(this.volunteer)
     .then (() =>
     {
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/vlntr-list']);
     }, err =>
     {});
   }
