@@ -49,4 +49,9 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
     });
   }
 
+  joinvlntrForm ()
+  {
+    this.router.navigate (['joinvlntr-form']);
+  }
+
 }

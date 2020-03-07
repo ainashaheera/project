@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="vlntr-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Join Volunteer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Join Volunteer</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Name" [(ngModel)]="joinvlntr.name"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input placeholder="Email" [(ngModel)]="joinvlntr.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Location" [(ngModel)]="joinvlntr.location"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Phone" [(ngModel)]="joinvlntr.phone"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="addJoinVlntr()">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

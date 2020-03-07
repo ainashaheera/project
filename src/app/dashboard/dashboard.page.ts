@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from "../shared/authentication-service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,25 @@ export class DashboardPage implements OnInit {
 
   constructor
   (
-    public authService: AuthenticationService
+    public authService: AuthenticationService,
+    private route: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  profilePage ()
+  {
+    this.route.navigate (['profile']);
+  }
+
+  registerCpgPage ()
+  {
+    this.route.navigate (['register-cpg']);
+  }
+
+  volunteerPage ()
+  {
+    this.route.navigate (['vlntr-list']);
   }
 
 }

@@ -8,13 +8,10 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" (click)="authService.SignOut()" expand="block">
-          Logout
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
+  <div id="container">
+    <ion-button size="default" (click)="profilePage()">Profile</ion-button>
+    <ion-button size="default" (click)="registerCpgPage()">Register Campaign</ion-button>
+    <ion-button size="default" (click)="volunteerPage()">Volunteer</ion-button>
+    <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button>
+  </div>
 </ion-content>

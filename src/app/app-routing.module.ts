@@ -17,6 +17,10 @@ const routes: Routes = [
   { path: 'view-volunteer/:id', loadChildren: () => import('./view-volunteer/view-volunteer.module').then( m => m.ViewVolunteerPageModule) },
   { path: 'update-volunteer/:id', loadChildren: () => import('./update-volunteer/update-volunteer.module').then( m => m.UpdateVolunteerPageModule) },
   { path: 'profile', loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule) },
+  {
+    path: 'joinvlntr-form',
+    loadChildren: () => import('./joinvlntr-form/joinvlntr-form.module').then( m => m.JoinvlntrFormPageModule)
+  },
 ];
 
 @NgModule({
