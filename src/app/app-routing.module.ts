@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'joinvlntr-form',
     loadChildren: () => import('./joinvlntr-form/joinvlntr-form.module').then( m => m.JoinvlntrFormPageModule)
   },
+  {
+    path: 'update-profile',
+    loadChildren: () => import('./update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
+  },
 ];
 
 @NgModule({

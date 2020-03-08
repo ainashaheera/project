@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Update Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Update Profile</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row *ngIf="authService.userData as user">
+        <img class="align-self-start mr-5 img-thumbnail rounded-circle" 
+              src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" 
+              alt="{{user.displayName}}">
+        <br>
+        <ion-item lines="full">
+          <ion-label><strong>Name</strong></ion-label>
+          <ion-input [(ngModel)]="user.displayName" value="user.displayName"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label><strong>User ID</strong></ion-label>
+          <ion-input [(ngModel)]="user.uid" value="user.uid"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+          <ion-label><strong>Email</strong></ion-label>
+          <ion-input [(ngModel)]="user.email" value="user.email"></ion-input>
+        </ion-item>
+
+        <ion-row lines="full">
+          <ion-col>
+            <ion-button size="long" color="primary" expand="block">Update</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

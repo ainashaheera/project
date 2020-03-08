@@ -4,12 +4,13 @@ import { User } from "src/app/shared/user";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.page.html',
+  styleUrls: ['./update-profile.page.scss'],
 })
-export class ProfilePage implements OnInit 
+export class UpdateProfilePage implements OnInit 
 {
+
   constructor
   (
     public authService: AuthenticationService,
@@ -19,9 +20,6 @@ export class ProfilePage implements OnInit
 
   ngOnInit() {}
 
-  updateProfile ()
-  {
-    this.router.navigate (['update-profile']);
-  }
+  
 
 }

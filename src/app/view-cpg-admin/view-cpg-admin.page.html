@@ -15,15 +15,15 @@
     </ion-card-header>
 
     <ion-card-content>
-      <p align="justify">{{campaign.organizationName}}</p>
-      <p align="justify">{{campaign.category}}</p>
-      <p align="justify">{{campaign.registrationNum}}</p>
-      <p align="justify">{{campaign.bankName}}</p>
-      <p align="justify">{{campaign.bankAccNum}}</p>
-      <p align="justify">{{campaign.website}}</p>
-      <p align="justify">{{campaign.email}}</p>
-      <p align="justify">{{campaign.phone}}</p>
-      <p align="justify">{{campaign.donationTarget}}</p>
+      <p><strong>Organization: </strong>{{campaign.organizationName}}</p>
+      <p><strong>Category: </strong>{{campaign.category}}</p>
+      <p><strong>Registration Num: </strong>{{campaign.registrationNum}}</p>
+      <p><strong>Bank Name: </strong>{{campaign.bankName}}</p>
+      <p><strong>Account Num: </strong>{{campaign.bankAccNum}}</p>
+      <p><strong>Website: </strong>{{campaign.website}}</p>
+      <p><strong>Email: </strong>{{campaign.email}}</p>
+      <p><strong>Phone Num: </strong>{{campaign.phone}}</p>
+      <p><strong>Donation Target: </strong>{{campaign.donationTarget}}</p>
       <br>
       <ion-button slot="start" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Edit</ion-button>
       <ion-button slot="end" color="danger" (click)="deleteCampaign()">Delete</ion-button>
