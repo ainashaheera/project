@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'update-profile',
     loadChildren: () => import('./update-profile/update-profile.module').then( m => m.UpdateProfilePageModule)
   },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
 ];
 
 @NgModule({
