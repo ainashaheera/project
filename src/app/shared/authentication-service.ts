@@ -50,6 +50,20 @@ export class AuthenticationService
         return this.ngFireAuth.auth.createUserWithEmailAndPassword (email, password)
     }
 
+    UpdateProfile ()
+    {
+        return this.ngFireAuth.auth.currentUser.updateProfile
+        ({
+            displayName: name,
+            photoURL: ''
+        })
+        .then (() =>
+        {
+            console.log('DisplayName updated')
+        })
+        .catch (err => console.log(err))
+    }
+
     //email verification when new user register
     SendVerificationMail ()
     {

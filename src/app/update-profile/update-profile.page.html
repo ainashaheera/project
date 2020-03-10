@@ -15,26 +15,26 @@
 
     <ion-card-content>
       <ion-row *ngIf="authService.userData as user">
-        <img class="align-self-start mr-5 img-thumbnail rounded-circle" 
+        <img class="align-self-start mr-3 img-thumbnail rounded-circle" 
               src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" 
               alt="{{user.displayName}}">
         <br>
         <ion-item lines="full">
           <ion-label><strong>Name</strong></ion-label>
-          <ion-input [(ngModel)]="user.displayName" value="user.displayName"></ion-input>
+          <ion-input [(ngModel)]="user.displayName"></ion-input>
         </ion-item>
-        <ion-item lines="full">
+        <!-- <ion-item lines="full">
           <ion-label><strong>User ID</strong></ion-label>
-          <ion-input [(ngModel)]="user.uid" value="user.uid"></ion-input>
+          <ion-input [(ngModel)]="user.uid"></ion-input>
         </ion-item>
         <ion-item lines="full">
           <ion-label><strong>Email</strong></ion-label>
-          <ion-input [(ngModel)]="user.email" value="user.email"></ion-input>
-        </ion-item>
+          <ion-input [(ngModel)]="user.email"></ion-input>
+        </ion-item> -->
 
         <ion-row lines="full">
           <ion-col>
-            <ion-button size="long" color="primary" expand="block">Update</ion-button>
+            <ion-button size="long" color="primary" (click)="authService.UpdateProfile()" expand="block">Update</ion-button>
           </ion-col>
         </ion-row>
       </ion-row>

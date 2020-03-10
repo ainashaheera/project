@@ -18,7 +18,9 @@ export class UpdateProfilePage implements OnInit
     public ngZone: NgZone
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+  }
 
   
 
