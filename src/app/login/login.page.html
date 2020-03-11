@@ -24,22 +24,22 @@
 
     <ion-card-content>
       <ion-item lines="full">
-        <ion-input placeholder="Email" type="text" #email required></ion-input>
+        <ion-input placeholder="Username" type="text" [(ngModel)]="username"></ion-input>
       </ion-item>
   
       <ion-item lines="full">
-        <ion-input placeholder="Password" type="password" #password required></ion-input>
+        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" (click)="logIn (email, password)" expand="block">
+          <ion-button (click)="login()" expand="block">
             Login
           </ion-button>
         </ion-col>
       </ion-row>
   
-      <ion-row>
+      <!-- <ion-row>
         <ion-col>
           <ion-button type="submit" color="danger" (click)="authService.GoogleAuth()" expand="block">
             Login with Google
@@ -51,7 +51,7 @@
         <ion-col>
           <span routerLink="/forgot-password">Forgot Password?</span>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
 
       <ion-row>
         <ion-col>

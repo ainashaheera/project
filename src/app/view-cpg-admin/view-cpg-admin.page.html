@@ -25,8 +25,8 @@
       <p><strong>Phone Num: </strong>{{campaign.phone}}</p>
       <p><strong>Donation Target: </strong>{{campaign.donationTarget}}</p>
       <br>
-      <ion-button slot="start" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Edit</ion-button>
-      <ion-button slot="end" color="danger" (click)="deleteCampaign()">Delete</ion-button>
+      <ion-button slot="start" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Approve</ion-button>
+      <ion-button slot="end" color="danger" (click)="deleteCampaign()">Reject</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

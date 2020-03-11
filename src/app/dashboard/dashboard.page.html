@@ -9,9 +9,11 @@
 
 <ion-content>
   <div id="container">
-    <ion-button size="default" (click)="profilePage()">Profile</ion-button>
-    <ion-button size="default" (click)="registerCpgPage()">Register Campaign</ion-button>
-    <ion-button size="default" (click)="volunteerPage()">Volunteer</ion-button>
-    <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button>
+    <ion-button size="default" [routerLink]="['/profile']">Profile</ion-button>
+    <ion-button size="default" [routerLink]="['/register-cpg']">Register Campaign</ion-button>
+    <ion-button size="default" [routerLink]="['/vlntr-list']">Volunteer</ion-button>
+
+    <ion-button size="default" *ngIf="isAdmin" [routerLink]="['/cpg-app-list']">Project Application</ion-button>
+    <!-- <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button> -->
   </div>
 </ion-content>

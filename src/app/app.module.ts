@@ -16,6 +16,9 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { UserService } from './user.service';
+import { AuthService } from './auth.service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -34,7 +37,9 @@ import { AppRoutingModule } from './app-routing.module';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFirestoreModule,
-    { provide: FirestoreSettingsToken, useValue:{}}
+    { provide: FirestoreSettingsToken, useValue:{}},
+    UserService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

@@ -14,7 +14,27 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-row *ngIf="authService.userData as user">
+      <div *ngIf="!busy">
+        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+        <div>
+          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/dummy-user.png"></ion-img>
+        </div>
+
+        <div class="profile-info">
+          <ion-item>
+            <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" placeholder="New Password?" [(ngModel)]="newpassword"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" placeholder="Enter Old Password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+
+          <ion-button fill="solid" expand="block" (click)="updateDetails()">Save</ion-button>
+        </div>
+      </div>
+      <!-- <ion-row *ngIf="authService.userData as user">
         <img class="align-self-start mr-3 img-thumbnail rounded-circle" 
               src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" 
               alt="{{user.displayName}}">
@@ -23,21 +43,21 @@
           <ion-label><strong>Name</strong></ion-label>
           <ion-input [(ngModel)]="user.displayName"></ion-input>
         </ion-item>
-        <!-- <ion-item lines="full">
+        <ion-item lines="full">
           <ion-label><strong>User ID</strong></ion-label>
           <ion-input [(ngModel)]="user.uid"></ion-input>
         </ion-item>
         <ion-item lines="full">
           <ion-label><strong>Email</strong></ion-label>
           <ion-input [(ngModel)]="user.email"></ion-input>
-        </ion-item> -->
+        </ion-item>
 
         <ion-row lines="full">
           <ion-col>
             <ion-button size="long" color="primary" (click)="authService.UpdateProfile()" expand="block">Update</ion-button>
           </ion-col>
         </ion-row>
-      </ion-row>
+      </ion-row> -->
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,6 +1,6 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { AuthenticationService } from '../shared/authentication-service';
-import { User } from "src/app/shared/user";
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,18 +10,44 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit 
 {
+  mainuser: AngularFirestoreDocument
+  //userPosts
+  sub
+  //posts 
+  username: string
+  profilePic: string
+
   constructor
   (
-    public authService: AuthenticationService,
-    public router: Router,
-    public ngZone: NgZone
-  ) { }
+    private afs: AngularFirestore,
+    private user: UserService,
+    private router: Router
+  ) 
+  {
+    this.mainuser=afs.doc(`users/${user.getUID()}`)
+    this.sub=this.mainuser.valueChanges().subscribe (event =>
+      {
+        //this.posts=event.posts
+        this.username=event.username
+        this.profilePic=event.profilePic
+      })
+  }
+
+  ngOnDestroy()
+  {
+    this.sub.unsubscribe()
+  }
+
+  // goTo(postID: string)
+  // {
+  //   this.router.navigate(['/'])
+  // }
 
   ngOnInit() {}
 
-  updateProfile ()
-  {
-    this.router.navigate (['update-profile']);
-  }
+  // updateProfile ()
+  // {
+  //   this.router.navigate (['update-profile']);
+  // }
 
 }

@@ -20,7 +20,20 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-row *ngIf="authService.userData as user">
+      <div id="profile-info" *ngIf="username">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4" class="user-image">
+              <ion-img src="assets/dummy-user.png"></ion-img>
+            </ion-col>
+            <ion-col size="8">
+              <p>{{username}}</p>
+              <ion-button shape="round" color="primary" routerLink="/update-profile">Update Profile</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <!-- <ion-row *ngIf="authService.userData as user">
         <img class="align-self-start mr-5 img-thumbnail rounded-circle" 
               src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" 
               alt="{{user.displayName}}">
@@ -31,7 +44,7 @@
         <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
         <br><br><br>
         <ion-button color="primary" expand="block" (click)="updateProfile()">Update</ion-button>
-      </ion-row>
+      </ion-row> -->
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -24,16 +24,20 @@
 
     <ion-card-content>
       <ion-item lines="full">
-        <ion-input placeholder="Email" type="text" #email required></ion-input>
+        <ion-input placeholder="Username" type="text" [(ngModel)]="username"></ion-input>
       </ion-item>
   
       <ion-item lines="full">
-        <ion-input placeholder="Password" type="password" #password required></ion-input>
+        <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-input placeholder="Cofirm Password" type="password" [(ngModel)]="cpassword"></ion-input>
       </ion-item>
 
       <ion-row>
         <ion-col>
-          <ion-button type="submit" (click)="signup (email, password)" expand="block">Sign Up</ion-button>
+          <ion-button (click)="signup()" expand="block">Sign Up</ion-button>
         </ion-col>
       </ion-row>
 

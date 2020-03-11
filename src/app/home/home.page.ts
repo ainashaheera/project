@@ -15,14 +15,4 @@ export class HomePage implements OnInit {
 
   ngOnInit() {}
 
-  loginPage ()
-  {
-    this.route.navigate (['login']);
-  }
-
-  signupPage ()
-  {
-    this.route.navigate (['signup']);
-  }
-
 }

@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Volunteer } from '../modal/Volunteer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VolunteerService } from '../services/volunteer.service';
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-view-volunteer',
@@ -10,6 +12,11 @@ import { VolunteerService } from '../services/volunteer.service';
 })
 export class ViewVolunteerPage implements OnInit, AfterViewInit 
 {
+  sub: any;
+  username: string;
+  mainuser: AngularFirestoreDocument;
+  isAdmin: boolean = false
+
   volunteer: Volunteer =
   {
     //status: '',
@@ -20,10 +27,20 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
 
   constructor
   (
+    private afs: AngularFirestore,
+    private user: UserService,
     private activatedRoute: ActivatedRoute,
     private vlService: VolunteerService,
     private router: Router
-  ) { }
+  ) 
+  {
+    this.mainuser=afs.doc(`users/${user.getUID()}`)
+    this.sub=this.mainuser.valueChanges().subscribe(event =>
+      {
+        this.username=event.username
+        this.isAdmin=event.isAdmin
+      })
+  }
 
   ngOnInit() {}
 
