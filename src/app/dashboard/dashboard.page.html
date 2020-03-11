@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
-    </ion-buttons>
+    </ion-buttons> -->
     <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +16,7 @@
     <ion-button size="default" [routerLink]="['/register-cpg']">Register Campaign</ion-button>
     <ion-button size="default" [routerLink]="['/vlntr-list']">Volunteer</ion-button>
 
-    <ion-button size="default" *ngIf="isAdmin" [routerLink]="['/cpg-app-list']">Project Application</ion-button>
+    <ion-button size="default" *ngIf="isAdmin" [routerLink]="['/cpg-app-list']">Campaign Application</ion-button>
     <!-- <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button> -->
   </div>
 </ion-content>

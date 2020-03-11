@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-title>Volunteer List</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="dashboard"></ion-back-button>
     </ion-buttons>
-    <ion-title>Volunteer List</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
     </ion-list-header>
     <ion-item *ngFor="let volunteer of (volunteers | async)">
       <ion-thumbnail slot="start">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAAAAAAALAAAAAABAAEAAAICTAEAOw==">
+        <img src="assets/default.png">
       </ion-thumbnail>
       <ion-label>
         <h2>{{volunteer.volunteerName}}</h2>
