@@ -3,6 +3,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Campaign } from '../modal/Campaign';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register-cpg',
@@ -32,6 +33,7 @@ export class RegisterCpgPage implements OnInit
 
   constructor
   (
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private fbService: FirebaseService,
     private toastCtrl: ToastController,
@@ -48,6 +50,13 @@ export class RegisterCpgPage implements OnInit
       this.router.navigate(['/dashboard']);
     }, err =>
     {});
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
 }

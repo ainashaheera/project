@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from './auth.service';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -15,6 +15,7 @@ export class AppComponent
   pages: any[]=[];
 
   constructor(
+    private authService: AuthService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
@@ -35,9 +36,9 @@ export class AppComponent
           url: "/profile"
         },
         {
-          pagename: "Register Campaign",
-          icon: "checkbox-outline",
-          url: "/register-cpg"
+          pagename: "Campaigns",
+          icon: "albums-outline",
+          url: "/cpg-app-list"
         },
         {
           pagename: "Volunteer",
@@ -45,12 +46,24 @@ export class AppComponent
           url: "/vlntr-list"
         },
         {
-          pagename: "Campaign Application",
-          icon: "duplicate-outline",
-          url: "/cpg-app-list"
+          pagename: "Events",
+          icon: "calendar-outline",
+          url: "/event-list"
+        },
+        {
+          pagename: "Stories",
+          icon: "list-circle-outline",
+          url: "/story-list"
         },
       ]
     });
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
   Goto (page)

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="event-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>View Event</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>{{event.eventName}}</ion-card-title>
+    </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p align="justify">{{event.description}}</p>
+      <br>
+      
+      <div class="ion-text-center">
+        <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-event/' + event.id">Edit</ion-button>
+        <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteEvent()">Delete</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

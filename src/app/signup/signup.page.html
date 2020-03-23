@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Sign Up</ion-title>
+    <!-- <ion-title>Sign Up</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
@@ -19,20 +19,25 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Sign Up</ion-card-title>
+      <div class="ion-text-center">
+        <ion-card-title>Sign Up</ion-card-title>
+      </div>
     </ion-card-header>
 
     <ion-card-content>
       <ion-item lines="full">
+        <ion-label><ion-icon name="person-circle"></ion-icon></ion-label>
         <ion-input placeholder="Username" type="text" [(ngModel)]="username"></ion-input>
       </ion-item>
   
       <ion-item lines="full">
+        <ion-label><ion-icon name="lock-closed"></ion-icon></ion-label>
         <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
-        <ion-input placeholder="Cofirm Password" type="password" [(ngModel)]="cpassword"></ion-input>
+        <ion-label><ion-icon name="lock-open"></ion-icon></ion-label>
+        <ion-input placeholder="Confirm Password" type="password" [(ngModel)]="cpassword"></ion-input>
       </ion-item>
 
       <ion-row>
@@ -41,11 +46,13 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
-        <ion-col>
-          <span>Already have an account? <span routerLink="/login">Login</span></span>
-        </ion-col>
-      </ion-row>
+      <div class="ion-text-center">
+        <ion-row>
+          <ion-col>
+            <span>Already have an account? <span routerLink="/login">Login</span></span>
+          </ion-col>
+        </ion-row>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

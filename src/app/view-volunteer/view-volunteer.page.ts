@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VolunteerService } from '../services/volunteer.service';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-view-volunteer',
@@ -15,7 +16,8 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
-  isAdmin: boolean = false
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
 
   volunteer: Volunteer =
   {
@@ -27,6 +29,7 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
 
   constructor
   (
+    private authService: AuthService,
     private afs: AngularFirestore,
     private user: UserService,
     private activatedRoute: ActivatedRoute,
@@ -39,6 +42,7 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
       {
         this.username=event.username
         this.isAdmin=event.isAdmin
+        this.isCustomer= event.isCustomer
       })
   }
 
@@ -61,14 +65,17 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
     this.vlService.deleteVolunteer(this.volunteer.id)
     .then(() => 
     {
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/volunteer-list']);
     }, err => {
     });
   }
 
-  joinvlntrForm ()
+  onLogout()
   {
-    this.router.navigate (['joinvlntr-form']);
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
+
 
 }

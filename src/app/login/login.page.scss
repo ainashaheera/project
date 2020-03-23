@@ -1,0 +1,9 @@
+.card
+{
+    background: rgba(255,255,255,0.5);
+}
+
+ion-content.background
+{
+    --background: url('src/assets/background.jpg') 0 0/100% 100% no-repeat;
+}

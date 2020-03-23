@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Volunteer } from '../modal/Volunteer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VolunteerService } from '../services/volunteer.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-update-volunteer',
@@ -20,6 +21,7 @@ export class UpdateVolunteerPage implements OnInit, AfterViewInit
 
   constructor
   (
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private vlService: VolunteerService,
     private router: Router
@@ -46,6 +48,13 @@ export class UpdateVolunteerPage implements OnInit, AfterViewInit
      this.router.navigate(['/']);
     }, err => {
     });
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
 }

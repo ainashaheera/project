@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Campaign } from '../modal/Campaign';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-update-cpg-admin',
@@ -31,6 +32,7 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
 
   constructor
   (
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private fbService: FirebaseService,
     private router: Router
@@ -56,6 +58,13 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
      this.router.navigate(['/']);
     }, err => {
     });
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
 }

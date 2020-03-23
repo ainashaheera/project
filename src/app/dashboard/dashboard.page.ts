@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from "../shared/authentication-service";
-import { Router } from '@angular/router';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+
+import { Observable } from 'rxjs';
+import { Campaign } from '../modal/campaign';
+import { FirebaseService } from '../services/firebase.service';
+// import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,14 +19,20 @@ export class DashboardPage implements OnInit
   sub: any;
   username: string;
   mainuser: AngularFirestoreDocument;
-  isAdmin: boolean = false
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
+
+  private campaigns: Observable<Campaign[]>;
 
   constructor
   (
-    //public authService: AuthenticationService,
+    private route: Router,
+    private authService: AuthService,
+    private fbService: FirebaseService,
+
     private afs: AngularFirestore,
     private user: UserService,
-    private route: Router
+    // private storage: NativeStorage
   ) 
   {
     this.mainuser=afs.doc(`users/${user.getUID()}`)
@@ -29,24 +40,24 @@ export class DashboardPage implements OnInit
       {
         this.username=event.username
         this.isAdmin=event.isAdmin
+        this.isCustomer= event.isCustomer
       })
   }
 
-  ngOnInit() {}
-
-  profilePage ()
+  ngOnInit(): void
   {
-    this.route.navigate (['profile']);
+    this.campaigns=this.fbService.getCampaigns();
+
+    // this.storage.setItem('username', this.username);
+    // this.storage.setItem('isAdmin', this.isAdmin);
+    // this.storage.setItem('isCustomer', this.isCustomer);
   }
 
-  registerCpgPage ()
+  onLogout()
   {
-    this.route.navigate (['register-cpg']);
-  }
-
-  volunteerPage ()
-  {
-    this.route.navigate (['vlntr-list']);
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.route.navigateByUrl('/login');
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +20,7 @@ export class ProfilePage implements OnInit
 
   constructor
   (
+    private authService: AuthService,
     private afs: AngularFirestore,
     private user: UserService,
     private router: Router
@@ -27,10 +29,17 @@ export class ProfilePage implements OnInit
     this.mainuser=afs.doc(`users/${user.getUID()}`)
     this.sub=this.mainuser.valueChanges().subscribe (event =>
       {
-        //this.posts=event.posts
+        // this.posts=event.posts
         this.username=event.username
         this.profilePic=event.profilePic
       })
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
   ngOnDestroy()

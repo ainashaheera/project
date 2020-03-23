@@ -1,8 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Register Campaign</ion-title>
+    <!-- <ion-title>Register Campaign</ion-title> -->
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="dashboard"></ion-back-button>
+      <ion-back-button defaultHref="cpg-app-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +13,9 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Register a New Campaign</ion-card-title>
+      <div class="ion-text-center">
+        <ion-card-title>Register Campaign</ion-card-title>
+      </div>
     </ion-card-header>
 
     <ion-card-content>
@@ -54,7 +59,8 @@
       </ion-item>
 
       <ion-item>
-        <ion-select placeholder="Category" [(ngModel)]="campaign.category">
+        <ion-label>Category</ion-label>
+        <ion-select [(ngModel)]="campaign.category">
           <ion-select-option value="Advocacy">Advocacy</ion-select-option>
           <ion-select-option value="Animals">Animals</ion-select-option>
           <ion-select-option value="Children">Children</ion-select-option>
@@ -86,7 +92,30 @@
       </ion-item>
   
       <ion-item>
-        <ion-input placeholder="Bank Name" [(ngModel)]="campaign.bankName"></ion-input>
+        <ion-label>Bank Name</ion-label>
+        <ion-select [(ngModel)]="campaign.bankName">
+          <ion-select-option value="Maybank">Maybank</ion-select-option>
+          <ion-select-option value="CIMB Bank">CIMB Bank</ion-select-option>
+          <ion-select-option value="Public Bank Berhad">Public Bank Berhad</ion-select-option>
+          <ion-select-option value="RHB Bank">RHB Bank</ion-select-option>
+          <ion-select-option value="Hong Leong Bank">Hong Leong Bank</ion-select-option>
+          <ion-select-option value="AmBank">AmBank</ion-select-option>
+          <ion-select-option value="UOB Malaysia Bank">UOB Malaysia Bank</ion-select-option>
+          <ion-select-option value="Bank Rakyat">Bank Rakyat</ion-select-option>
+          <ion-select-option value="OCBC Bank Malaysia">OCBC Bank Malaysia</ion-select-option>
+          <ion-select-option value="HSBC Bank Malaysia">HSBC Bank Malaysia</ion-select-option>
+          <ion-select-option value="Affin Bank">Affin Bank</ion-select-option>
+          <ion-select-option value="Bank Islam Malaysia">Bank Islam Malaysia</ion-select-option>
+          <ion-select-option value="Standard Chartered Bank Malaysia">Standard Chartered Bank Malaysia</ion-select-option>
+          <ion-select-option value="CitiBank Malaysia">CitiBank Malaysia</ion-select-option>
+          <ion-select-option value="Bank Simpanan Nasional">Bank Simpanan Nasional</ion-select-option>
+          <ion-select-option value="Bank Muamalat Malaysia Berhad">Bank Muamalat Malaysia Berhad</ion-select-option>
+          <ion-select-option value="Alliance Bank">Alliance Bank</ion-select-option>
+          <ion-select-option value="Agrobank">Agrobank</ion-select-option>
+          <ion-select-option value="Al-Rajhi Malaysia">Al-Rajhi Malaysia</ion-select-option>
+          <ion-select-option value="MBSB Bank Berhad">MBSB Bank Berhad</ion-select-option>
+          <ion-select-option value="Co-op Bank Pertama">Co-op Bank Pertama</ion-select-option>
+        </ion-select>
       </ion-item>
   
       <ion-item>

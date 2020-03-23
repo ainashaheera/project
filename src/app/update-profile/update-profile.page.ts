@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { UserService } from '../user.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-update-profile',
@@ -29,6 +30,7 @@ export class UpdateProfilePage implements OnInit
   constructor
   (
     //private http: Http, 
+    private authService: AuthService,
 		private afs: AngularFirestore,
 		private router: Router,
 		private alertController: AlertController,
@@ -115,6 +117,13 @@ export class UpdateProfilePage implements OnInit
     await this.presentAlert('Done!', 'Your profile was updated!')
 
     this.router.navigate(['/profile'])
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
   

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="story-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>Update Story</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Update Story</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked"><strong>Name</strong></ion-label>
+        <ion-input [(ngModel)]="story.storyName"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked"><strong>Description</strong</ion-label>
+        <ion-textarea rows="3" [(ngModel)]="story.description"></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="updateStory()">Update</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

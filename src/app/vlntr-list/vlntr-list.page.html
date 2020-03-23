@@ -1,8 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Volunteer List</ion-title>
+    <!-- <ion-title>Volunteer List</ion-title> -->
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="dashboard"></ion-back-button>
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,15 +16,23 @@
     <ion-list-header>
       <ion-label>Volunteers</ion-label>
     </ion-list-header>
+
     <ion-item *ngFor="let volunteer of (volunteers | async)">
       <ion-thumbnail slot="start">
         <img src="assets/default.png">
       </ion-thumbnail>
+
       <ion-label>
         <h2>{{volunteer.volunteerName}}</h2>
         <p>{{volunteer.description}}</p>
       </ion-label>
+      
       <ion-button fill="outline" slot="end" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button>
     </ion-item>
   </ion-list>
+  <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="'/add-volunteer'">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

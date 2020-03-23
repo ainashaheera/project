@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="cpg-app-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>View Campaign</ion-title>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>View Campaign</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{campaign.campaignName}}</ion-card-title>
-      <ion-card-subtitle>{{campaign.description}}</ion-card-subtitle>
+      <div class="ion-text-center">
+        <ion-card-title>{{campaign.campaignName}}</ion-card-title>
+        <ion-card-subtitle>{{campaign.description}}</ion-card-subtitle>
+      </div>
     </ion-card-header>
 
     <ion-card-content>
@@ -25,8 +30,11 @@
       <p><strong>Phone Num: </strong>{{campaign.phone}}</p>
       <p><strong>Donation Target: </strong>{{campaign.donationTarget}}</p>
       <br>
-      <ion-button slot="start" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Approve</ion-button>
-      <ion-button slot="end" color="danger" (click)="deleteCampaign()">Reject</ion-button>
+      
+      <div class="ion-text-center">
+        <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Approve</ion-button>
+        <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteCampaign()">Reject</ion-button>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

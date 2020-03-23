@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="event-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>New Event</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>New Event</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Event Name" [(ngModel)]="event.eventName"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-textarea rows="3" placeholder="Event Description" [(ngModel)]="event.description"></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="addEvent()">Add</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

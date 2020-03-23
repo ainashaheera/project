@@ -17,7 +17,8 @@ export class SignupPage implements OnInit
   username: string = ""
   password: string = ""
   cpassword: string = ""
-  isAdmin: boolean = false
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
 
   constructor
   (
@@ -43,7 +44,7 @@ export class SignupPage implements OnInit
 
   async signup()
   {
-    const {username, password, cpassword, isAdmin} = this
+    const {username, password, cpassword, isAdmin, isCustomer} = this
     if (password !== cpassword)
     {
       return console.error ("Password don't match")
@@ -53,7 +54,7 @@ export class SignupPage implements OnInit
       const res = await this.afAuth.auth.createUserWithEmailAndPassword (username + '@gmail.com', password)
       this.afstore.doc(`users/${res.user.uid}`).set
       ({
-        username, isAdmin
+        username, isAdmin, isCustomer
       })
       this.user.setUser
       ({

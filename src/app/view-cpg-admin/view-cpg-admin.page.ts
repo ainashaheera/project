@@ -2,6 +2,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Campaign } from '../modal/Campaign';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-view-cpg-admin',
@@ -10,6 +13,12 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class ViewCpgAdminPage implements OnInit, AfterViewInit 
 {
+  sub: any;
+  username: string;
+  mainuser: AngularFirestoreDocument;
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
+
   campaign: Campaign =
   {
     //status: '',
@@ -33,8 +42,20 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
   (
     private activatedRoute: ActivatedRoute,
     private fbService: FirebaseService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private authService: AuthService,
+    private afs: AngularFirestore,
+    private user: UserService,
+  ) 
+  {
+    this.mainuser=afs.doc(`users/${user.getUID()}`)
+    this.sub=this.mainuser.valueChanges().subscribe(event =>
+      {
+        this.username=event.username
+        this.isAdmin=event.isAdmin
+        this.isCustomer= event.isCustomer
+      })
+  }
 
   ngOnInit() {}
 
@@ -58,6 +79,13 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
       this.router.navigateByUrl('/');
     }, err => {
     });
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
 }

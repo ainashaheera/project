@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { VolunteerService } from '../services/volunteer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { Volunteer } from '../modal/Volunteer'
+import { Volunteer } from '../modal/Volunteer';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-add-volunteer',
@@ -21,6 +22,7 @@ export class AddVolunteerPage implements OnInit
 
   constructor
   (
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private vlService: VolunteerService,
     private toastCtrl: ToastController,
@@ -37,6 +39,13 @@ export class AddVolunteerPage implements OnInit
       this.router.navigate(['/vlntr-list']);
     }, err =>
     {});
+  }
+
+  onLogout()
+  {
+    //tslint:disable-next-line:no-unused-expression
+    this.authService.logout;
+    this.router.navigateByUrl('/login');
   }
 
 }

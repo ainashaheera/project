@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Profile</ion-title>
+    <!-- <ion-title>Profile</ion-title> -->
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="dashboard"></ion-back-button>
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +22,9 @@
 <ion-content padding>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Profile</ion-card-title>
+      <div class="ion-text-center">
+        <ion-card-title>Profile</ion-card-title>
+      </div>
     </ion-card-header>
 
     <ion-card-content>

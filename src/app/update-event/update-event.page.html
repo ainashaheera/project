@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="event-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>Update Event</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Update Event</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked"><strong>Name</strong></ion-label>
+        <ion-input [(ngModel)]="event.eventName"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked"><strong>Description</strong></ion-label>
+        <ion-textarea rows="3" [(ngModel)]="event.description"></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="updateEvent()">Update</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

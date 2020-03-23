@@ -1,23 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="vlntr-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>Update Volunteer</ion-title>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>Update Volunteer</ion-title> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-input placeholder="Volunteer Name" [(ngModel)]="volunteer.volunteerName"></ion-input>
-    </ion-item>
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Update Volunteer Event</ion-card-title>
+      </div>
+    </ion-card-header>
 
-    <ion-item>
-      <ion-textarea rows="6" placeholder="Volunteer Description" [(ngModel)]="volunteer.description"></ion-textarea>
-    </ion-item>
-  </ion-list>
-  <ion-button color="primary" expand="full" (click)="updateVolunteer()">
-    Update
-  </ion-button>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked"><strong>Name</strong></ion-label>
+        <ion-input [(ngModel)]="volunteer.volunteerName"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked"><strong>Description</strong></ion-label>
+        <ion-textarea rows="3" [(ngModel)]="volunteer.description"></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="addVolunteer()">Update</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
