@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="vlntr-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>View Volunteer</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Volunteer Teacher</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Volunteer Name: </strong>{{joinvlntr.name}}</p>
+      <p><strong>Email: </strong>{{joinvlntr.email}}</p>
+      <p><strong>Location: </strong>{{joinvlntr.location}}</p>
+      <p><strong>Phone: </strong>{{joinvlntr.phone}}</p>
+      <p *ngIf="isAdmin"><strong>Status: </strong>{{joinvlntr.status}}</p>
+      <br>
+      
+      <div class="ion-text-center">
+        <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-joinvlntr/' + joinvlntr.id">Manage</ion-button>
+        <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteJoinVlntr()">Delete</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,7 +1,7 @@
 export interface Campaign 
 {
     id?: any;
-    //status: "in process";
+    status: string;
     description: string;
     //image: File;
     organizationName: string;

@@ -14,6 +14,7 @@ export class JoinvlntrFormPage implements OnInit
 {
   joinvlntr: JoinVlntr =
   {
+    status: 'Waiting',
     name: '',
     email: '',
     location: '',

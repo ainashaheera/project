@@ -63,6 +63,7 @@ export class JoinVlntrService
   {
     return this.joinvlntrCollection.doc(joinvlntr.id).update
     ({
+      status: joinvlntr.status,
       name: joinvlntr.name,
       email: joinvlntr.email,
       location: joinvlntr.location,

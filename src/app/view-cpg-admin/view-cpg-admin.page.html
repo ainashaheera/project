@@ -29,11 +29,12 @@
       <p><strong>Email: </strong>{{campaign.email}}</p>
       <p><strong>Phone Num: </strong>{{campaign.phone}}</p>
       <p><strong>Donation Target: </strong>{{campaign.donationTarget}}</p>
+      <p *ngIf="isAdmin"><strong>Status: </strong>{{campaign.status}}</p>
       <br>
       
       <div class="ion-text-center">
-        <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Approve</ion-button>
-        <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteCampaign()">Reject</ion-button>
+        <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-cpg-admin/' + campaign.id">Manage</ion-button>
+        <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteCampaign()">Delete</ion-button>
       </div>
     </ion-card-content>
   </ion-card>

@@ -1,17 +1,17 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Campaign } from '../modal/Campaign';
+import { JoinVlntr } from '../modal/join-vlntr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FirebaseService } from '../services/firebase.service';
+import { JoinVlntrService } from '../services/join-vlntr.service';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-view-cpg-admin',
-  templateUrl: './view-cpg-admin.page.html',
-  styleUrls: ['./view-cpg-admin.page.scss'],
+  selector: 'app-view-joinvlntr',
+  templateUrl: './view-joinvlntr.page.html',
+  styleUrls: ['./view-joinvlntr.page.scss'],
 })
-export class ViewCpgAdminPage implements OnInit, AfterViewInit 
+export class ViewJoinvlntrPage implements OnInit, AfterViewInit 
 {
   sub: any;
   username: string;
@@ -19,29 +19,19 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
   isAdmin: boolean = false;
   isCustomer: boolean = true;
 
-  campaign: Campaign =
+  joinvlntr: JoinVlntr =
   {
     status: '',
-    description: '',
-    //image: '',
-    organizationName: '',
-    campaignName: '',
-    category: '',
-    registrationNum: '',
-    //document: '',
-    //textExmpNum: '',
-    bankName: '',
-    bankAccNum: '',
-    website: '',
+    name: '',
     email: '',
+    location: '',
     phone: '',
-    donationTarget: ''
   };
 
   constructor
   (
     private activatedRoute: ActivatedRoute,
-    private fbService: FirebaseService,
+    private jvService: JoinVlntrService,
     private router: Router,
     private authService: AuthService,
     private afs: AngularFirestore,
@@ -64,19 +54,19 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
     {
-      this.fbService.getCampaign(id).subscribe(campaignData =>
+      this.jvService.getJoinVlntr(id).subscribe(joinvlntrData =>
         {
-          this.campaign=campaignData;
+          this.joinvlntr=joinvlntrData;
         });
     }
   }
 
-  deleteCampaign() 
+  deleteJoinVlntr() 
   {
-    this.fbService.deleteCampaign(this.campaign.id)
+    this.jvService.deleteJoinVlntr(this.joinvlntr.id)
     .then(() => 
     {
-      this.router.navigateByUrl('/cpg-app-list');
+      this.router.navigateByUrl('/joinvlntr-list');
     }, err => {
     });
   }

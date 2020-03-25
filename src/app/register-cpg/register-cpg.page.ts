@@ -12,9 +12,11 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterCpgPage implements OnInit 
 {
+  statusForm: false;
+
   campaign: Campaign =
   {
-    //status: '',
+    status: 'Waiting',
     description: '',
     //image: '',
     organizationName: '',
@@ -22,7 +24,7 @@ export class RegisterCpgPage implements OnInit
     category: '',
     registrationNum: '',
     //document: '',
-    //textExmpNum: '',
+    //taxExmpNum: '',
     bankName: '',
     bankAccNum: '',
     website: '',
@@ -38,6 +40,7 @@ export class RegisterCpgPage implements OnInit
     private fbService: FirebaseService,
     private toastCtrl: ToastController,
     private router: Router
+    // status='waiting'
   ) { }
 
   ngOnInit() {}
@@ -57,6 +60,12 @@ export class RegisterCpgPage implements OnInit
     //tslint:disable-next-line:no-unused-expression
     this.authService.logout;
     this.router.navigateByUrl('/login');
+  }
+
+  fileChanged(event)
+  {
+    const files=event.target.files
+    console.log(files)
   }
 
 }

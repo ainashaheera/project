@@ -13,7 +13,7 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
 {
   campaign: Campaign =
   {
-    //status: '',
+    status: '',
     description: '',
     //image: '',
     organizationName: '',
@@ -21,7 +21,7 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
     category: '',
     registrationNum: '',
     //document: '',
-    //textExmpNum: '',
+    //taxExmpNum: '',
     bankName: '',
     bankAccNum: '',
     website: '',
@@ -55,7 +55,7 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
   updateCampaign() {
     this.fbService.updateCampaign(this.campaign)
     .then(() => {
-     this.router.navigate(['/']);
+     this.router.navigate(['/cpg-app-list']);
     }, err => {
     });
   }

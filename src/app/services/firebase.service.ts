@@ -63,7 +63,7 @@ export class FirebaseService
   {
     return this.campaignCollection.doc(campaign.id).update
     ({
-      //status: campaign.status,
+      status: campaign.status,
       description: campaign.description,
       //image: campaign.image,
       organizationName: campaign.organizationName,

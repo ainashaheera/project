@@ -90,6 +90,10 @@
       <ion-item>
         <ion-input placeholder="Registration Number" [(ngModel)]="campaign.registrationNum"></ion-input>
       </ion-item>
+
+      <!-- <ion-item>
+        <input type="file" *ngIf="!document" (change)="fileChanged($event)" class="filebtn" #fileButton />
+      </ion-item> -->
   
       <ion-item>
         <ion-label>Bank Name</ion-label>
@@ -125,6 +129,14 @@
       <ion-item>
         <ion-input placeholder="Donation Target" [(ngModel)]="campaign.donationTarget"></ion-input>
       </ion-item>
+
+      <!-- <ion-item>
+        <ion-input placeholder="Status" [(ngModel)]="campaign.status"></ion-input>
+      </ion-item> -->
+
+      <!-- <ion-item>
+        <ion-input placeholder="Tax Num" [(ngModel)]="campaign.taxExmpNum"></ion-input>
+      </ion-item> -->
 
       <ion-row>
         <ion-col>

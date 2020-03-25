@@ -14,13 +14,13 @@
   <ion-card>
     <ion-card-header>
       <div class="ion-text-center">
-        <ion-card-title>Update Campaign</ion-card-title>
+        <ion-card-title>Manage Campaign</ion-card-title>
       </div>
     </ion-card-header>
 
     <ion-card-content>
       <ion-segment value="favorite">
-        Fill out the application below, our team will review your application and inform you once your application is approved.
+        View the application and choose whether to approve or reject this application.
       </ion-segment>
     </ion-card-content>
 
@@ -31,7 +31,7 @@
 
       <ion-item>
         <ion-label position="stacked"><strong>Description</strong></ion-label>
-        <ion-textarea rows="3" [(ngModel)]="campaign.description"></ion-textarea>
+        <ion-textarea rows="3" [(ngModel)]="campaign.description" disabled></ion-textarea>
       </ion-item>
 
       <br>
@@ -41,32 +41,32 @@
 
       <ion-item>
         <ion-label position="stacked"><strong>Name</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.campaignName"></ion-input>
+        <ion-input [(ngModel)]="campaign.campaignName" disabled></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="stacked"><strong>Organization Name</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.organizationName"></ion-input>
+        <ion-input [(ngModel)]="campaign.organizationName" disabled></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="stacked"><strong>Website Link</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.website"></ion-input>
+        <ion-input [(ngModel)]="campaign.website" disabled></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="stacked"><strong>Phone Number</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.phone"></ion-input>
+        <ion-input [(ngModel)]="campaign.phone" disabled></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="stacked"><strong>Email</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.email"></ion-input>
+        <ion-input [(ngModel)]="campaign.email" disabled></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked"><strong>Category</strong></ion-label>
-        <ion-select [(ngModel)]="campaign.category">
+        <ion-select [(ngModel)]="campaign.category" disabled>
           <ion-select-option value="Advocacy">Advocacy</ion-select-option>
           <ion-select-option value="Animals">Animals</ion-select-option>
           <ion-select-option value="Children">Children</ion-select-option>
@@ -95,12 +95,12 @@
 
       <ion-item>
         <ion-label position="stacked"><strong>Registration Number</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.registrationNum"></ion-input>
+        <ion-input [(ngModel)]="campaign.registrationNum" disabled></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label position="stacked"><strong>Bank Name</strong></ion-label>
-        <ion-select [(ngModel)]="campaign.category">
+        <ion-select [(ngModel)]="campaign.bankName" disabled>
           <ion-select-option value="Maybank">Maybank</ion-select-option>
           <ion-select-option value="CIMB Bank">CIMB Bank</ion-select-option>
           <ion-select-option value="Public Bank Berhad">Public Bank Berhad</ion-select-option>
@@ -127,13 +127,26 @@
   
       <ion-item>
         <ion-label position="stacked"><strong>Bank Account Number</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.bankAccNum"></ion-input>
+        <ion-input [(ngModel)]="campaign.bankAccNum" disabled></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="stacked"><strong>Donation Target</strong></ion-label>
-        <ion-input [(ngModel)]="campaign.donationTarget"></ion-input>
+        <ion-input [(ngModel)]="campaign.donationTarget" disabled></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"><strong>Status</strong></ion-label>
+        <ion-select placeholder="Approve or Reject?" [(ngModel)]="campaign.status">
+          <ion-select-option value="Approve">Approve</ion-select-option>
+          <ion-select-option value="Reject">Reject</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label position="stacked"><strong>Tax Number</strong></ion-label>
+        <ion-input [(ngModel)]="campaign.taxExmpNum"></ion-input>
+      </ion-item> -->
 
       <ion-row>
         <ion-col>

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="vlntr-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>Join Volunteer</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Manage Join Volunteer</ion-card-title>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-segment value="favorite">
+        View the application and choose whether to approve or reject this application.
+      </ion-segment>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-input placeholder="Name" [(ngModel)]="joinvlntr.name" disabled></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input placeholder="Email" [(ngModel)]="joinvlntr.email" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Location" [(ngModel)]="joinvlntr.location" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input placeholder="Phone" [(ngModel)]="joinvlntr.phone" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked"><strong>Status</strong></ion-label>
+        <ion-select placeholder="Approve or Reject?" [(ngModel)]="joinvlntr.status">
+          <ion-select-option value="Approve">Approve</ion-select-option>
+          <ion-select-option value="Reject">Reject</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="updateJoinVlntr()">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
