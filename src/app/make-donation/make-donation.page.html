@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>Register Campaign</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="cpg-app-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Donate to:</ion-card-title>
+        <ion-card-subtitle>Baju Sekolah Untuk Mereka</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-segment value="favourite">
+        Your donation may help to ease these people.
+      </ion-segment>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-card-subtitle ion-text color="dark">
+        Select an amount to donate:
+      </ion-card-subtitle>
+
+      <ion-list>
+        <ion-radio-group value="25">
+          <ion-item>
+            <ion-label>RM 25</ion-label>
+            <ion-radio slot="start" color="success" value="25"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>RM 50</ion-label>
+            <ion-radio slot="start" color="success" value="50"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>RM 100</ion-label>
+            <ion-radio slot="start" color="success" value="100"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Custom Amount</ion-label>
+            <ion-radio slot="start" color="success" value="custom"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <br>
+      <ion-card-subtitle ion-text color="dark">
+        Leave a donation message:
+      </ion-card-subtitle>
+
+      <ion-item>
+        <ion-textarea rows="2" placeholder="Message"></ion-textarea>
+      </ion-item>
+
+      <br>
+      <ion-item>
+        <ion-label>Donate annonymously</ion-label>
+        <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block">
+            Donate
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

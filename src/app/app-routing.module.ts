@@ -40,6 +40,10 @@ const routes: Routes = [
   { path: 'add-fundraiser', loadChildren: () => import('./add-fundraiser/add-fundraiser.module').then( m => m.AddFundraiserPageModule) },
   { path: 'fund-list', loadChildren: () => import('./fund-list/fund-list.module').then( m => m.FundListPageModule) },
   { path: 'view-fund/:id', loadChildren: () => import('./view-fund/view-fund.module').then( m => m.ViewFundPageModule) },
+  {
+    path: 'make-donation',
+    loadChildren: () => import('./make-donation/make-donation.module').then( m => m.MakeDonationPageModule)
+  },
   
   
 ];
