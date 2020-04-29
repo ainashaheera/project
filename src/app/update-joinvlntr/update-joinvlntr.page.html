@@ -41,6 +41,11 @@
         <ion-input placeholder="Phone" [(ngModel)]="joinvlntr.phone" disabled></ion-input>
       </ion-item>
 
+      <br>
+      <ion-card-subtitle ion-text color="dark">
+        ADMIN SECTION
+      </ion-card-subtitle>
+      
       <ion-item>
         <ion-label position="stacked"><strong>Status</strong></ion-label>
         <ion-select placeholder="Approve or Reject?" [(ngModel)]="joinvlntr.status">
@@ -51,7 +56,7 @@
 
       <ion-row>
         <ion-col>
-          <ion-button color="primary" expand="block" (click)="updateJoinVlntr()">Apply</ion-button>
+          <ion-button color="primary" expand="block" (click)="updateJoinVlntr()">Manage</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>

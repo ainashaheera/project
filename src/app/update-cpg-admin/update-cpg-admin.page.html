@@ -135,6 +135,11 @@
         <ion-input [(ngModel)]="campaign.donationTarget" disabled></ion-input>
       </ion-item>
 
+      <br>
+      <ion-card-subtitle ion-text color="dark">
+        ADMIN SECTION
+      </ion-card-subtitle>
+
       <ion-item>
         <ion-label position="stacked"><strong>Status</strong></ion-label>
         <ion-select placeholder="Approve or Reject?" [(ngModel)]="campaign.status">
@@ -142,6 +147,14 @@
           <ion-select-option value="Reject">Reject</ion-select-option>
         </ion-select>
       </ion-item>
+
+      <!-- <ion-radio-group>
+        <ion-item>
+          <ion-label position="stacked"><strong>Status</strong></ion-label>
+          <ion-radio slot="end" color="success" value="Approve" [(ngModel)]="campaign.status"></ion-radio>
+          <ion-radio slot="end" color="danger" value="Reject" [(ngModel)]="campaign.status"></ion-radio>
+        </ion-item>
+      </ion-radio-group> -->
 
       <!-- <ion-item>
         <ion-label position="stacked"><strong>Tax Number</strong></ion-label>
@@ -151,7 +164,7 @@
       <ion-row>
         <ion-col>
           <ion-button color="primary" expand="block" (click)="updateCampaign()">
-            Update
+            Manage
           </ion-button>
         </ion-col>
       </ion-row>

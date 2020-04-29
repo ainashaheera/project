@@ -37,6 +37,10 @@ const routes: Routes = [
   { path: 'view-joinvlntr/:id', loadChildren: () => import('./view-joinvlntr/view-joinvlntr.module').then( m => m.ViewJoinvlntrPageModule) },
   { path: 'update-joinvlntr/:id', loadChildren: () => import('./update-joinvlntr/update-joinvlntr.module').then( m => m.UpdateJoinvlntrPageModule) },
   
+  { path: 'add-fundraiser', loadChildren: () => import('./add-fundraiser/add-fundraiser.module').then( m => m.AddFundraiserPageModule) },
+  { path: 'fund-list', loadChildren: () => import('./fund-list/fund-list.module').then( m => m.FundListPageModule) },
+  { path: 'view-fund/:id', loadChildren: () => import('./view-fund/view-fund.module').then( m => m.ViewFundPageModule) },
+  
   
 ];
 

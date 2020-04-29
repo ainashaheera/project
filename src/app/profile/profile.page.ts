@@ -4,6 +4,10 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
+import { Observable } from 'rxjs';
+import { Campaign } from '../modal/campaign';
+import { FirebaseService } from '../services/firebase.service';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -18,9 +22,12 @@ export class ProfilePage implements OnInit
   username: string
   profilePic: string
 
+  private campaigns: Observable<Campaign[]>;
+
   constructor
   (
     private authService: AuthService,
+    private fbService: FirebaseService,
     private afs: AngularFirestore,
     private user: UserService,
     private router: Router
@@ -52,7 +59,10 @@ export class ProfilePage implements OnInit
   //   this.router.navigate(['/'])
   // }
 
-  ngOnInit() {}
+  ngOnInit(): void 
+  {
+    this.campaigns=this.fbService.getCampaigns();
+  }
 
   // updateProfile ()
   // {

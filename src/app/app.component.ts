@@ -41,6 +41,11 @@ export class AppComponent
           url: "/cpg-app-list"
         },
         {
+          pagename: "Fundraisers",
+          icon: "newspaper-outline",
+          url: "/fund-list"
+        },
+        {
           pagename: "Volunteer",
           icon: "hand-left-outline",
           url: "/vlntr-list"

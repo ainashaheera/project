@@ -1,17 +1,17 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Volunteer } from '../modal/Volunteer';
+import { Fundraiser } from '../modal/Fundraiser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VolunteerService } from '../services/volunteer.service';
+import { FundraiserService } from '../services/fundraiser.service';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-view-volunteer',
-  templateUrl: './view-volunteer.page.html',
-  styleUrls: ['./view-volunteer.page.scss'],
+  selector: 'app-view-fund',
+  templateUrl: './view-fund.page.html',
+  styleUrls: ['./view-fund.page.scss'],
 })
-export class ViewVolunteerPage implements OnInit, AfterViewInit 
+export class ViewFundPage implements OnInit, AfterViewInit  
 {
   sub: any;
   username: string;
@@ -19,12 +19,12 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
   isAdmin: boolean = false;
   isCustomer: boolean = true;
 
-  volunteer: Volunteer =
+  fundraiser: Fundraiser =
   {
-    //status: '',
-    description: '',
-    //image: '',
-    volunteerName: '' 
+    title: '',
+    story: '',
+    goal: '',
+    periodS: ''
   };
 
   constructor
@@ -33,7 +33,7 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
     private afs: AngularFirestore,
     private user: UserService,
     private activatedRoute: ActivatedRoute,
-    private vlService: VolunteerService,
+    private frsService: FundraiserService,
     private router: Router
   ) 
   {
@@ -53,19 +53,19 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id)
     {
-      this.vlService.getVolunteer(id).subscribe(volunteerData =>
+      this.frsService.getFundraiser(id).subscribe(fundraiserData =>
         {
-          this.volunteer=volunteerData;
+          this.fundraiser=fundraiserData;
         });
     }
   }
 
-  deleteVolunteer() 
+  deleteFundraiser() 
   {
-    this.vlService.deleteVolunteer(this.volunteer.id)
+    this.frsService.deleteFundraiser(this.fundraiser.id)
     .then(() => 
     {
-      this.router.navigate(['/vlntr-list']);
+      this.router.navigate(['/fund-list']);
     }, err => {
     });
   }
@@ -76,6 +76,5 @@ export class ViewVolunteerPage implements OnInit, AfterViewInit
     this.authService.logout;
     this.router.navigateByUrl('/login');
   }
-
 
 }

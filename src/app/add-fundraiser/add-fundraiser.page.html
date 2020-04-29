@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>Register Campaign</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="fund-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>Create Fundraising Campaign</ion-card-title>
+        <ion-card-subtitle>New Fundraiser for Baju Sekolah Untuk Mereka</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-segment value="favourite">
+        A Fundraising Campaign is a way to help raise funds for an amazing projects that inspire you.
+      </ion-segment>
+    </ion-card-content>
+
+    <ion-card-content>
+      <!-- <ion-item>
+        <ion-label position="stacked"><strong>Title of Your Fundraising Campaign</strong></ion-label>
+        <ion-input [(ngModel)]="fundraiser.title"></ion-input>
+      </ion-item> -->
+      <ion-card-subtitle ion-text color="dark">
+        TITLE OF YOUR FUNDRAISING CAMPAIGN
+      </ion-card-subtitle>
+
+      <ion-item>
+        <ion-input placeholder="Fundraising Campaign Title" [(ngModel)]="fundraiser.title"></ion-input>
+      </ion-item>
+
+      <br>
+      <ion-card-subtitle ion-text color="dark">
+        STORY
+      </ion-card-subtitle>
+
+      <ion-item>
+        <ion-textarea rows="3" placeholder="Why are you fundraising for this campaign?" [(ngModel)]="fundraiser.story"></ion-textarea>
+      </ion-item>
+
+      <br>
+      <ion-card-subtitle ion-text color="dark">
+        GOAL
+      </ion-card-subtitle>
+
+      <ion-item>
+        <ion-input placeholder="Target Funds (RM)" [(ngModel)]="fundraiser.goal"></ion-input>
+      </ion-item>
+
+      <br>
+      <ion-card-subtitle ion-text color="dark">
+        FUNDRAISING CAMPAIGN PERIOD
+      </ion-card-subtitle>
+
+      <ion-text>Fundraising Start Date</ion-text>
+      <ion-item>
+        <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
+        <ion-input type="date" placeholder="Fundraising Start Date" [(ngModel)]="fundraiser.periodS"></ion-input>
+      </ion-item>
+      <ion-text>Campaign end date: 23/7/2020</ion-text>
+
+      <ion-row>
+        <ion-col>
+          <ion-button color="primary" expand="block" (click)="addFundraiser()">
+            Create Fundraiser
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

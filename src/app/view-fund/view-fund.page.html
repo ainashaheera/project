@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="fund-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>View Volunteer</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="ion-text-center">
+        <ion-card-title>{{fundraiser.title}}</ion-card-title>
+        <ion-card-subtitle>{{fundraiser.story}}</ion-card-subtitle>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Goal: </strong>{{fundraiser.goal}}</p>
+      <p><strong>Start Fundraising: </strong>{{fundraiser.periodS}}</p>
+      <p><strong>Campaign End: </strong>2020-7-23</p>
+      <br>
+
+      <div class="ion-text-center">
+        <!-- <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-fund/' + fund.id">Manage</ion-button> -->
+        <ion-button color="success" *ngIf="isCustomer" expand="block">Donate</ion-button>
+        <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteFundraiser()">Delete</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

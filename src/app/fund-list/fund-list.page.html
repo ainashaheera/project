@@ -17,23 +17,22 @@
   <ion-searchbar></ion-searchbar>
   <ion-list>
     <ion-list-header>
-      <ion-label>Campaigns</ion-label>
+      <ion-label>Fundraisers</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let campaign of (campaigns | async)">
+    <ion-item *ngFor="let fundraiser of (fundraisers | async)">
       <ion-thumbnail slot="start">
         <img src="assets/default.png">
       </ion-thumbnail>
       <ion-label>
-        <h2>{{campaign.campaignName}}</h2>
-        <p>{{campaign.description}}</p>
+        <h2>{{fundraiser.title}}</h2>
+        <p>{{fundraiser.story}}</p>
       </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-cpg-admin/'+campaign.id">View</ion-button>
-      <!-- <img src="assets/fundraise.png" routerLink="['/add-fundraiser']"> -->
+      <ion-button fill="outline" slot="end" [routerLink]="'/view-fund/'+fundraiser.id">View</ion-button>
     </ion-item>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink]="'/register-cpg'">
+    <ion-fab-button [routerLink]="'/add-fundraiser'">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

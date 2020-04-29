@@ -54,5 +54,42 @@
         <ion-button color="primary" expand="block" (click)="updateProfile()">Update</ion-button>
       </ion-row> -->
     </ion-card-content>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Campaigns</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let campaign of (campaigns | async)">
+          <!-- <ion-thumbnail slot="start">
+            <img src="assets/default.png">
+          </ion-thumbnail> -->
+          <ion-label>
+            <h2>{{campaign.campaignName}}</h2>
+            <p>{{campaign.status}}</p>
+          </ion-label>
+          <ion-button fill="outline" slot="end" [routerLink]="'/view-cpg-admin/'+campaign.id">View</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Volunteers</ion-label>
+        </ion-list-header>
+        <!-- <ion-item *ngFor="let campaign of (campaigns | async)"> -->
+        <ion-item>
+          <!-- <ion-thumbnail slot="start">
+            <img src="assets/default.png">
+          </ion-thumbnail> -->
+          <ion-label>
+            <h2>Volunteer Teacher</h2>
+            <p>Approve</p>
+          </ion-label>
+          <ion-button fill="outline" slot="end">View</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
   </ion-card>
 </ion-content>
