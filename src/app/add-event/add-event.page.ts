@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventsService } from '../services/events.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Event } from '../modal/Event';
 import { AuthService } from '../auth.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-add-event',
@@ -15,9 +16,14 @@ export class AddEventPage implements OnInit
   event: Event=
   {
     description: '',
-    //image: '',
+    image: '',
     eventName: '' 
   };
+
+  @ViewChild('fileBtn', {static: false}) fileBtn: 
+  {
+		nativeElement: HTMLInputElement
+  }
 
   constructor
   (
@@ -25,7 +31,8 @@ export class AddEventPage implements OnInit
     private activatedRoute: ActivatedRoute,
     private eService: EventsService,
     private toastCtrl: ToastController,
-    private router: Router
+    private router: Router,
+    private http: Http
   ) { }
 
   ngOnInit() {}
@@ -40,6 +47,30 @@ export class AddEventPage implements OnInit
 
     });
   }
+
+  updateProfilePic() 
+  	{
+		this.fileBtn.nativeElement.click()
+	}
+
+	uploadPic(event) 
+	{
+			const files = event.target.files
+
+			const data = new FormData()
+			data.append('file', files[0])
+			data.append('UPLOADCARE_STORE', '1')
+			data.append('UPLOADCARE_PUB_KEY', '33ac01f36018c3e6ad38')
+
+			this.http.post('https://upload.uploadcare.com/base/', data)
+			.subscribe(event => {
+        const uuid = event.json().file
+        this.event.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+				// this.mainuser.update({
+				// 	profilePic: uuid
+				// })
+			})
+		}
 
   onLogout()
   {

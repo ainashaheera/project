@@ -53,11 +53,7 @@ export class StoryService
 
   updateStory(story: Story): Promise<void> 
   {
-    return this.storyCollection.doc(story.id).update
-    ({
-      storyName: story.storyName,
-      description: story.description 
-    });
+    return this.storyCollection.doc(story.id).update(story);
   }
 
   deleteStory(id: string): Promise<void> 

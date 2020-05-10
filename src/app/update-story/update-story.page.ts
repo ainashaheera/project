@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Story } from '../modal/Story';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoryService } from '../services/story.service';
 import { AuthService } from '../auth.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-update-story',
@@ -14,16 +15,22 @@ export class UpdateStoryPage implements OnInit, AfterViewInit
   story: Story=
   {
     description: '',
-    //image: '',
+    image: '',
     storyName: ''
   };
+
+  @ViewChild('fileBtn', {static: false}) fileBtn: 
+  {
+		nativeElement: HTMLInputElement
+  }
 
   constructor
   (
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private sService: StoryService,
-    private router: Router
+    private router: Router,
+    private http: Http
   ) { }
 
   ngOnInit() {}
@@ -48,6 +55,30 @@ export class UpdateStoryPage implements OnInit, AfterViewInit
     }, err=>
     {
 
+    })
+  }
+
+  updateProfilePic() 
+  	{
+		this.fileBtn.nativeElement.click()
+	}
+
+	uploadPic(event) 
+	{
+    const files = event.target.files
+
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append('UPLOADCARE_STORE', '1')
+    data.append('UPLOADCARE_PUB_KEY', '33ac01f36018c3e6ad38')
+
+    this.http.post('https://upload.uploadcare.com/base/', data)
+    .subscribe(event => {
+      const uuid = event.json().file
+      this.story.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+      // this.mainuser.update({
+      // 	profilePic: uuid
+      // })
     })
   }
 

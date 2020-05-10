@@ -54,11 +54,7 @@ export class EventsService
 
   updateEvent(event: Event): Promise<void>
   {
-    return this.eventCollection.doc(event.id).update
-    ({
-      eventName: event.eventName,
-      description: event.description
-    });
+    return this.eventCollection.doc(event.id).update(event);
   }
 
   deleteEvent(id: string): Promise<void>

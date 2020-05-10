@@ -22,7 +22,8 @@
 
     <ion-item *ngFor="let story of (stories | async)">
       <ion-thumbnail slot="start">
-        <img src="assets/default.png">
+        <!-- <img src="assets/default.png"> -->
+        <ion-img *ngIf="!!story.image" class="profile-pic"  [src]="story.image"></ion-img>
       </ion-thumbnail>
 
       <ion-label>

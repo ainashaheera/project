@@ -22,7 +22,8 @@
 
     <ion-item *ngFor="let event of (events | async)">
       <ion-thumbnail slot="start">
-        <img src="assets/default.png">
+        <!-- <img src="assets/default.png"> -->
+        <ion-img *ngIf="!!event.image" class="profile-pic"  [src]="event.image"></ion-img>
       </ion-thumbnail>
 
       <ion-label>

@@ -2,6 +2,6 @@ export interface Story
 {
     id?: any;
     description: string;
-    //image: File;
+    image?: any;
     storyName: string; 
 }
