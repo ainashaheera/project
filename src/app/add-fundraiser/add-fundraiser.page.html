@@ -38,6 +38,16 @@
         <ion-input placeholder="Fundraising Campaign Title" [(ngModel)]="fundraiser.title"></ion-input>
       </ion-item>
 
+      <ion-item>
+        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+          <div *ngIf="!fundraiser.image">
+            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
+          </div>
+          <div *ngIf="fundraiser.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="fundraiser.image"></ion-img>
+        </div>
+      </ion-item> 
+
       <br>
       <ion-card-subtitle ion-text color="dark">
         STORY

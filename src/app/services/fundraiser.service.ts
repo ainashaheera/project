@@ -61,13 +61,7 @@ export class FundraiserService
   //update fundraiser
   updateFundraiser (fundraiser: Fundraiser): Promise<void>
   {
-    return this.fundraiserCollection.doc(fundraiser.id).update
-    ({
-      title: fundraiser.title,
-      story: fundraiser.story,
-      goal: fundraiser.goal,
-      periodS: fundraiser.periodS
-    })
+    return this.fundraiserCollection.doc(fundraiser.id).update(fundraiser);
   }
 
   //delete fundraiser

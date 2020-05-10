@@ -5,5 +5,5 @@ export interface Fundraiser
     story: string;
     goal: string;
     periodS: string;
-    //image: File; 
+    image?: any;
 }

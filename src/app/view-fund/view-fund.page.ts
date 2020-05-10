@@ -24,7 +24,8 @@ export class ViewFundPage implements OnInit, AfterViewInit
     title: '',
     story: '',
     goal: '',
-    periodS: ''
+    periodS: '',
+    image: ''
   };
 
   constructor

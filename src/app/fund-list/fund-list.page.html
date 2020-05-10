@@ -21,7 +21,8 @@
     </ion-list-header>
     <ion-item *ngFor="let fundraiser of (fundraisers | async)">
       <ion-thumbnail slot="start">
-        <img src="assets/default.png">
+        <!-- <img src="assets/default.png"> -->
+        <ion-img *ngIf="!!fundraiser.image" class="profile-pic"  [src]="fundraiser.image"></ion-img>
       </ion-thumbnail>
       <ion-label>
         <h2>{{fundraiser.title}}</h2>

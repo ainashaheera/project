@@ -87,7 +87,6 @@ export class RegisterCpgPage implements OnInit
 			})
 		}
 
-
   onLogout()
   {
     //tslint:disable-next-line:no-unused-expression
