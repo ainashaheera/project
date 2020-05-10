@@ -23,6 +23,16 @@
       <ion-item>
         <ion-input placeholder="Volunteer Name" [(ngModel)]="volunteer.volunteerName"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+          <div *ngIf="!volunteer.image">
+            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
+          </div>
+          <div *ngIf="volunteer.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="volunteer.image"></ion-img>
+        </div>
+      </ion-item>
   
       <ion-item>
         <ion-textarea rows="3" placeholder="Volunteer Description" [(ngModel)]="volunteer.description"></ion-textarea>

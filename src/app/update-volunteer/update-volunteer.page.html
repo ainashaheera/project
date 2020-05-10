@@ -23,6 +23,16 @@
         <ion-label position="stacked"><strong>Name</strong></ion-label>
         <ion-input [(ngModel)]="volunteer.volunteerName"></ion-input>
       </ion-item>
+
+      <ion-item>
+        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+          <div *ngIf="!volunteer.image">
+            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
+          </div>
+          <div *ngIf="volunteer.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="volunteer.image"></ion-img>
+        </div>
+      </ion-item>  
   
       <ion-item>
         <ion-label position="stacked"><strong>Description</strong></ion-label>
@@ -31,7 +41,7 @@
 
       <ion-row>
         <ion-col>
-          <ion-button color="primary" expand="block" (click)="addVolunteer()">Update</ion-button>
+          <ion-button color="primary" expand="block" (click)="updateVolunteer()">Update</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>

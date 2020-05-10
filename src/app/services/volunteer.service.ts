@@ -61,13 +61,7 @@ export class VolunteerService
   //update volunteer
   updateVolunteer (volunteer: Volunteer): Promise<void>
   {
-    return this.volunteerCollection.doc(volunteer.id).update
-    ({
-      //status: volunteer.status,
-      description: volunteer.description,
-      //image: volunteer.image,
-      volunteerName: volunteer.volunteerName
-    })
+    return this.volunteerCollection.doc(volunteer.id).update(volunteer);
   }
 
   //delete volunteer

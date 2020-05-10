@@ -19,7 +19,8 @@
 
     <ion-item *ngFor="let volunteer of (volunteers | async)">
       <ion-thumbnail slot="start">
-        <img src="assets/default.png">
+        <!-- <img src="assets/default.png"> -->
+        <ion-img *ngIf="!!volunteer.image" class="profile-pic"  [src]="volunteer.image"></ion-img>
       </ion-thumbnail>
 
       <ion-label>
