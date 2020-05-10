@@ -3,7 +3,7 @@ export interface Campaign
     id?: any;
     status: string;
     description: string;
-    //image: File;
+    image?: any;
     organizationName: string;
     campaignName: string;
     category: string;

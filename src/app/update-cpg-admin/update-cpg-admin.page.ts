@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Campaign } from '../modal/Campaign';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from '../auth.service';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-update-cpg-admin',
@@ -15,7 +16,7 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
   {
     status: '',
     description: '',
-    //image: '',
+    image: '',
     organizationName: '',
     campaignName: '',
     category: '',
@@ -30,12 +31,18 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
     donationTarget: ''
   };
 
+  @ViewChild('fileBtn', {static: false}) fileBtn: 
+  {
+		nativeElement: HTMLInputElement
+  }
+
   constructor
   (
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private fbService: FirebaseService,
-    private router: Router
+    private router: Router,
+    private http: Http
   ) { }
 
   ngOnInit() {}
@@ -58,6 +65,30 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
      this.router.navigate(['/cpg-app-list']);
     }, err => {
     });
+  }
+
+  updateProfilePic() 
+  	{
+		this.fileBtn.nativeElement.click()
+	}
+
+	uploadPic(event) 
+	{
+    const files = event.target.files
+
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append('UPLOADCARE_STORE', '1')
+    data.append('UPLOADCARE_PUB_KEY', '33ac01f36018c3e6ad38')
+
+    this.http.post('https://upload.uploadcare.com/base/', data)
+    .subscribe(event => {
+      const uuid = event.json().file
+      this.campaign.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+      // this.mainuser.update({
+      // 	profilePic: uuid
+      // })
+    })
   }
 
   onLogout()

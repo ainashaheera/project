@@ -61,24 +61,7 @@ export class FirebaseService
   //update campaign
   updateCampaign (campaign: Campaign): Promise<void>
   {
-    return this.campaignCollection.doc(campaign.id).update
-    ({
-      status: campaign.status,
-      description: campaign.description,
-      //image: campaign.image,
-      organizationName: campaign.organizationName,
-      campaignName: campaign.campaignName,
-      category: campaign.category,
-      registrationNum: campaign.registrationNum,
-      //document: campaign.document,
-      //textExmpNum: campaign.textExmpNum,
-      bankName: campaign.bankName,
-      bankAccNum: campaign.bankAccNum,
-      website: campaign.website,
-      email: campaign.email,
-      phone: campaign.phone,
-      donationTarget: campaign.donationTarget,  
-    })
+    return this.campaignCollection.doc(campaign.id).update(campaign);
   }
 
   //delete campaign

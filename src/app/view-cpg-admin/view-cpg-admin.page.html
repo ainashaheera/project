@@ -20,6 +20,7 @@
     </ion-card-header>
 
     <ion-card-content>
+      <ion-img *ngIf="!!campaign.image" class="profile-pic"  [src]="campaign.image"></ion-img>
       <p><strong>Organization: </strong>{{campaign.organizationName}}</p>
       <p><strong>Category: </strong>{{campaign.category}}</p>
       <p><strong>Registration Num: </strong>{{campaign.registrationNum}}</p>

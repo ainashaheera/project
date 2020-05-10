@@ -23,7 +23,7 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
   {
     status: '',
     description: '',
-    //image: '',
+    image: '',
     organizationName: '',
     campaignName: '',
     category: '',

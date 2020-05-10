@@ -21,8 +21,10 @@
     </ion-list-header>
     <ion-item *ngFor="let campaign of (campaigns | async)">
       <ion-thumbnail slot="start">
-        <img src="assets/default.png">
+        <!-- <img src="assets/default.png"> -->
+        <ion-img *ngIf="!!campaign.image" class="profile-pic"  [src]="campaign.image"></ion-img>
       </ion-thumbnail>
+      <!-- <ion-img *ngIf="!!campaign.image" [src]="campaign.image"></ion-img><br> -->
       <ion-label>
         <h2>{{campaign.campaignName}}</h2>
         <p>{{campaign.description}}</p>
