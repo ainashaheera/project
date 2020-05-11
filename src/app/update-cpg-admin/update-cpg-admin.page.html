@@ -145,6 +145,11 @@
         <ion-input [(ngModel)]="campaign.donationTarget" disabled></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
+        <ion-input type="date" placeholder="Start Date" [(ngModel)]="campaign.endDate"></ion-input>
+      </ion-item>
+
       <br>
       <ion-card-subtitle ion-text color="dark">
         ADMIN SECTION

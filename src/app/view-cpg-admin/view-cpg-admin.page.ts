@@ -35,7 +35,9 @@ export class ViewCpgAdminPage implements OnInit, AfterViewInit
     website: '',
     email: '',
     phone: '',
-    donationTarget: ''
+    donationTarget: '',
+    endDate: '',
+    total: ''
   };
 
   constructor

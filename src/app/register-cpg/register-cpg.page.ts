@@ -32,7 +32,9 @@ export class RegisterCpgPage implements OnInit
     website: '',
     email: '',
     phone: '',
-    donationTarget: ''
+    donationTarget: '',
+    endDate: '',
+    total: ''
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 

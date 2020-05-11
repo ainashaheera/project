@@ -30,8 +30,12 @@
         Select an amount to donate:
       </ion-card-subtitle>
 
+      <ion-item>
+        <ion-input placeholder="Name" [(ngModel)]="donation.name"></ion-input>
+      </ion-item>
+
       <ion-list>
-        <ion-radio-group value="25">
+        <ion-radio-group value="25" [(ngModel)]="donation.amount">
           <ion-item>
             <ion-label>RM 25</ion-label>
             <ion-radio slot="start" color="success" value="25"></ion-radio>
@@ -51,7 +55,7 @@
         </ion-radio-group>
       </ion-list>
 
-      <br>
+      <!-- <br>
       <ion-card-subtitle ion-text color="dark">
         Leave a donation message:
       </ion-card-subtitle>
@@ -64,11 +68,11 @@
       <ion-item>
         <ion-label>Donate annonymously</ion-label>
         <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
-      </ion-item>
+      </ion-item> -->
 
       <ion-row>
         <ion-col>
-          <ion-button color="primary" expand="block">
+          <ion-button color="primary" expand="block" (click)="addDonation()">
             Donate
           </ion-button>
         </ion-col>
