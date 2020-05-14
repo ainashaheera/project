@@ -11,37 +11,44 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <div class="ion-text-center">
-        <ion-card-title>New Event</ion-card-title>
-      </div>
-    </ion-card-header>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>New Event</ion-label>
+      </ion-list-header>
+    </div>
+  </ion-list>
 
-    <ion-card-content>
-      <ion-item>
-        <ion-input placeholder="Event Name" [(ngModel)]="event.eventName"></ion-input>
-      </ion-item>
+  <ion-list class="line-input">
 
-      <ion-item>
-        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
-          <div *ngIf="!event.image">
-            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
-          </div>
-          <div *ngIf="event.image">
-          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="event.image"></ion-img>
+    <ion-label>Volunteer Event Name</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="event.eventName"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-label>Description</ion-label>
+    <ion-item>
+      <ion-textarea rows="3" [(ngModel)]="event.description"></ion-textarea>
+    </ion-item>
+    <br>
+
+    <ion-label>Photo</ion-label>
+    <ion-item>
+      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+        <div *ngIf="!event.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
         </div>
-      </ion-item>
-  
-      <ion-item>
-        <ion-textarea rows="3" placeholder="Event Description" [(ngModel)]="event.description"></ion-textarea>
-      </ion-item>
+        <div *ngIf="event.image">
+        <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="event.image"></ion-img>
+      </div>
+    </ion-item>
+    <br>
+  </ion-list>
 
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="addEvent()">Add</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="addEvent()">Add</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

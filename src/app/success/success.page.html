@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="payment-method"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>New Story</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <br><br>
+  <ion-img width="500" height="600" src="assets/done.png"></ion-img>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Successful</ion-label>
+      </ion-list-header>
+      <h4>Thank you for donating!</h4>
+    </div>
+  </ion-list>
+
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" [routerLink]="['/dashboard']">Back to home</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

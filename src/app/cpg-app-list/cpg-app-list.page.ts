@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+
 import { Observable } from 'rxjs';
 import { Campaign } from '../modal/campaign';
 import { FirebaseService } from '../services/firebase.service';
-import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cpg-app-list',
@@ -12,14 +15,31 @@ import { Router } from '@angular/router';
 })
 export class CpgAppListPage implements OnInit 
 {
+  sub: any;
+  username: string;
+  mainuser: AngularFirestoreDocument;
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
+
   private campaigns: Observable<Campaign[]>;
 
   constructor
   (
     private authService: AuthService,
     private fbService: FirebaseService,
-    private route: Router
-  ) { }
+    private route: Router,
+    private afs: AngularFirestore,
+    private user: UserService,
+  ) 
+  {
+    this.mainuser=afs.doc(`users/${user.getUID()}`)
+    this.sub=this.mainuser.valueChanges().subscribe(event =>
+      {
+        this.username=event.username
+        this.isAdmin=event.isAdmin
+        this.isCustomer= event.isCustomer
+      })
+  }
 
   ngOnInit(): void 
   {

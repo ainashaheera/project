@@ -11,55 +11,57 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <div class="ion-text-center">
-        <ion-card-title>Manage Join Volunteer</ion-card-title>
-      </div>
-    </ion-card-header>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Manage Join Volunteer</ion-label>
+      </ion-list-header>
+    </div>
+  </ion-list>
 
-    <ion-card-content>
-      <ion-segment value="favorite">
-        View the application and choose whether to approve or reject this application.
-      </ion-segment>
-    </ion-card-content>
+  <ion-list class="line-input">
 
-    <ion-card-content>
-      <ion-item>
-        <ion-input placeholder="Name" [(ngModel)]="joinvlntr.name" disabled></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Email" [(ngModel)]="joinvlntr.email" disabled></ion-input>
-      </ion-item>
+    <ion-label>Name</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="joinvlntr.name" disabled></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-input placeholder="Location" [(ngModel)]="joinvlntr.location" disabled></ion-input>
-      </ion-item>
+    <ion-label>Email</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="joinvlntr.email" disabled></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-input placeholder="Phone" [(ngModel)]="joinvlntr.phone" disabled></ion-input>
-      </ion-item>
+    <ion-label>Location</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="joinvlntr.location" disabled></ion-input>
+    </ion-item>
+    <br>
 
-      <br>
-      <ion-card-subtitle ion-text color="dark">
-        ADMIN SECTION
-      </ion-card-subtitle>
-      
-      <ion-item>
-        <ion-label position="stacked"><strong>Status</strong></ion-label>
-        <ion-select placeholder="Approve or Reject?" [(ngModel)]="joinvlntr.status">
-          <ion-select-option value="Approve">Approve</ion-select-option>
-          <ion-select-option value="Reject">Reject</ion-select-option>
-        </ion-select>
-      </ion-item>
+    <ion-label>Phone</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="joinvlntr.phone" disabled></ion-input>
+    </ion-item>
+    <br>
+  </ion-list>
 
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="updateJoinVlntr()">Manage</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <h5>ADMIN SECTION</h5>
+  <ion-list class="line-input">
+    <ion-label>Status (Approve or Reject)</ion-label>
+    <ion-item>
+      <ion-select placeholder="Select" [(ngModel)]="joinvlntr.status">
+        <ion-select-option value="Approve">Approve</ion-select-option>
+        <ion-select-option value="Reject">Reject</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+  </ion-list>
+
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="updateJoinVlntr()">Manage</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>
 

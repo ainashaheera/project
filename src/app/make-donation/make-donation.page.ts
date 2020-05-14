@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { DonationService } from '../services/donation.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Campaign } from '../modal/Campaign';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
-import { Donation } from '../modal/Donation';
+import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
 
@@ -11,34 +10,58 @@ import { Http } from '@angular/http';
   templateUrl: './make-donation.page.html',
   styleUrls: ['./make-donation.page.scss'],
 })
-export class MakeDonationPage implements OnInit 
+export class MakeDonationPage implements OnInit, AfterViewInit  
 {
-  donation: Donation =
+  campaign: Campaign =
   {
-    amount: '',
-    name: ''
-  }
+    status: 'Waiting',
+    description: '',
+    image: '',
+    organizationName: '',
+    campaignName: '',
+    category: '',
+    registrationNum: '',
+    //document: '',
+    //taxExmpNum: '',
+    bankName: '',
+    bankAccNum: '',
+    website: '',
+    email: '',
+    phone: '',
+    donationTarget: '',
+    endDate: '',
+    total: '0'
+  };
 
   constructor
   (
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private dnService: DonationService,
-    private toastCtrl: ToastController,
+    private fbService: FirebaseService,
     private router: Router,
     private http: Http
   ) { }
 
   ngOnInit() {}
 
-  addDonation ()
+  ngAfterViewInit(): void
   {
-    this.dnService.addDonation(this.donation)
-    .then (() =>
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id)
     {
-      this.router.navigate(['/dashboard']);
-    }, err =>
-    {});
+      this.fbService.getCampaign(id).subscribe(campaignData =>
+        {
+          this.campaign=campaignData;
+        });
+    }
+  }
+
+  updateCampaign() {
+    this.fbService.updateCampaign(this.campaign)
+    .then(() => {
+     this.router.navigate(['/payment-method']);
+    }, err => {
+    });
   }
 
   onLogout()

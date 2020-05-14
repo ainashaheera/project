@@ -11,155 +11,157 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <div class="ion-text-center">
-        <ion-card-title>Register Campaign</ion-card-title>
-      </div>
-    </ion-card-header>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Register Campaign</ion-label>
+      </ion-list-header>
+    </div>
+  </ion-list>
 
-    <ion-card-content>
-      <ion-segment value="favorite">
-        Fill out the application below, our team will review your application and inform you once your application is approved.
-      </ion-segment>
-    </ion-card-content>
+  <h5>PROJECT DESCRIPTION</h5>
+  <ion-list class="line-input">
 
-    <ion-card-content>
-      <ion-card-subtitle ion-text color="dark">
-        PROJECT DESCRIPTION
-      </ion-card-subtitle>
+    <ion-label>Campaign Name</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.campaignName"></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-textarea rows="3" placeholder="Campaign Description" [(ngModel)]="campaign.description"></ion-textarea>
-      </ion-item>
+    <ion-label>Campaign Description</ion-label>
+    <ion-item>
+      <ion-textarea rows="3" [(ngModel)]="campaign.description"></ion-textarea>
+    </ion-item>
+    <br>
 
-      <br>
-      <ion-card-subtitle ion-text color="dark">
-        CONTACT DETAILS
-      </ion-card-subtitle>
+    <ion-label>Campaign Category</ion-label>
+    <ion-item>
+      <ion-select [(ngModel)]="campaign.category" placeholder="Select">
+        <ion-select-option value="Advocacy">Advocacy</ion-select-option>
+        <ion-select-option value="Animals">Animals</ion-select-option>
+        <ion-select-option value="Children">Children</ion-select-option>
+        <ion-select-option value="Culture">Culture</ion-select-option>
+        <ion-select-option value="Disable People">Disable People</ion-select-option>
+        <ion-select-option value="Education">Education</ion-select-option>
+        <ion-select-option value="Environment">Environment</ion-select-option>
+        <ion-select-option value="Health">Health</ion-select-option>
+        <ion-select-option value="Orang Asli">Orang Asli</ion-select-option>
+        <ion-select-option value="Refugees">Refugees</ion-select-option>
+        <ion-select-option value="Senior Citizens">Senior Citizens</ion-select-option>
+        <ion-select-option value="Single Parents">Single Parents</ion-select-option>
+        <ion-select-option value="Support Group">Support Group</ion-select-option>
+        <ion-select-option value="Women">Women</ion-select-option>
+        <ion-select-option value="Youth">Youth</ion-select-option>
+        <ion-select-option value="Special Enterprise">Special Enterprise</ion-select-option>
+        <ion-select-option value="Government Agency">Government Agency</ion-select-option>
+        <ion-select-option value="Homeless Services">Homeless Services</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-input placeholder="Campaign Name" [(ngModel)]="campaign.campaignName"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
-          <div *ngIf="!campaign.image">
-            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
-          </div>
-          <div *ngIf="campaign.image">
-          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="campaign.image"></ion-img>
+    <ion-label>Campaign Photo</ion-label>
+    <ion-item>
+      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+        <div *ngIf="!campaign.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
         </div>
-      </ion-item>   
-  
-      <ion-item>
-        <ion-input placeholder="Organization Name" [(ngModel)]="campaign.organizationName"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Website Link" [(ngModel)]="campaign.website"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Phone Number" [(ngModel)]="campaign.phone"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Email" [(ngModel)]="campaign.email"></ion-input>
-      </ion-item>
+        <div *ngIf="campaign.image">
+        <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="campaign.image"></ion-img>
+      </div>
+    </ion-item> 
+    <br>
+  </ion-list>
 
-      <ion-item>
-        <ion-label>Category</ion-label>
-        <ion-select [(ngModel)]="campaign.category">
-          <ion-select-option value="Advocacy">Advocacy</ion-select-option>
-          <ion-select-option value="Animals">Animals</ion-select-option>
-          <ion-select-option value="Children">Children</ion-select-option>
-          <ion-select-option value="Culture">Culture</ion-select-option>
-          <ion-select-option value="Disable People">Disable People</ion-select-option>
-          <ion-select-option value="Education">Education</ion-select-option>
-          <ion-select-option value="Environment">Environment</ion-select-option>
-          <ion-select-option value="Health">Health</ion-select-option>
-          <ion-select-option value="Orang Asli">Orang Asli</ion-select-option>
-          <ion-select-option value="Refugees">Refugees</ion-select-option>
-          <ion-select-option value="Senior Citizens">Senior Citizens</ion-select-option>
-          <ion-select-option value="Single Parents">Single Parents</ion-select-option>
-          <ion-select-option value="Support Group">Support Group</ion-select-option>
-          <ion-select-option value="Women">Women</ion-select-option>
-          <ion-select-option value="Youth">Youth</ion-select-option>
-          <ion-select-option value="Special Enterprise">Special Enterprise</ion-select-option>
-          <ion-select-option value="Government Agency">Government Agency</ion-select-option>
-          <ion-select-option value="Homeless Services">Homeless Services</ion-select-option>
-        </ion-select>
-      </ion-item>
+  <h5>CONTACT DETAILS</h5>
+  <ion-list class="line-input">
 
-      <br>
-      <ion-card-subtitle ion-text color="dark">
-        REGISTRATION DETAILS
-      </ion-card-subtitle>
+    <ion-label>Organization Name</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.organizationName"></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-input placeholder="Registration Number" [(ngModel)]="campaign.registrationNum"></ion-input>
-      </ion-item>
+    <ion-label>Website Link</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.website"></ion-input>
+    </ion-item>
+    <br>
 
-      <!-- <ion-item>
-        <input type="file" *ngIf="!document" (change)="fileChanged($event)" class="filebtn" #fileButton />
-      </ion-item> -->
-  
-      <ion-item>
-        <ion-label>Bank Name</ion-label>
-        <ion-select [(ngModel)]="campaign.bankName">
-          <ion-select-option value="Maybank">Maybank</ion-select-option>
-          <ion-select-option value="CIMB Bank">CIMB Bank</ion-select-option>
-          <ion-select-option value="Public Bank Berhad">Public Bank Berhad</ion-select-option>
-          <ion-select-option value="RHB Bank">RHB Bank</ion-select-option>
-          <ion-select-option value="Hong Leong Bank">Hong Leong Bank</ion-select-option>
-          <ion-select-option value="AmBank">AmBank</ion-select-option>
-          <ion-select-option value="UOB Malaysia Bank">UOB Malaysia Bank</ion-select-option>
-          <ion-select-option value="Bank Rakyat">Bank Rakyat</ion-select-option>
-          <ion-select-option value="OCBC Bank Malaysia">OCBC Bank Malaysia</ion-select-option>
-          <ion-select-option value="HSBC Bank Malaysia">HSBC Bank Malaysia</ion-select-option>
-          <ion-select-option value="Affin Bank">Affin Bank</ion-select-option>
-          <ion-select-option value="Bank Islam Malaysia">Bank Islam Malaysia</ion-select-option>
-          <ion-select-option value="Standard Chartered Bank Malaysia">Standard Chartered Bank Malaysia</ion-select-option>
-          <ion-select-option value="CitiBank Malaysia">CitiBank Malaysia</ion-select-option>
-          <ion-select-option value="Bank Simpanan Nasional">Bank Simpanan Nasional</ion-select-option>
-          <ion-select-option value="Bank Muamalat Malaysia Berhad">Bank Muamalat Malaysia Berhad</ion-select-option>
-          <ion-select-option value="Alliance Bank">Alliance Bank</ion-select-option>
-          <ion-select-option value="Agrobank">Agrobank</ion-select-option>
-          <ion-select-option value="Al-Rajhi Malaysia">Al-Rajhi Malaysia</ion-select-option>
-          <ion-select-option value="MBSB Bank Berhad">MBSB Bank Berhad</ion-select-option>
-          <ion-select-option value="Co-op Bank Pertama">Co-op Bank Pertama</ion-select-option>
-        </ion-select>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Bank Account Num" [(ngModel)]="campaign.bankAccNum"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input placeholder="Donation Target" [(ngModel)]="campaign.donationTarget"></ion-input>
-      </ion-item>
+    <ion-label>Phone Number</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.phone"></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
-        <ion-input type="date" placeholder="Start Date" [(ngModel)]="campaign.endDate"></ion-input>
-      </ion-item>
+    <ion-label>Email</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.email"></ion-input>
+    </ion-item>
+    <br>
+  </ion-list>
 
-      <!-- <ion-item>
-        <ion-input placeholder="Status" [(ngModel)]="campaign.status"></ion-input>
-      </ion-item> -->
+  <h5>REGISTRATION DETAILS</h5>
+  <ion-list class="line-input">
 
-      <!-- <ion-item>
-        <ion-input placeholder="Tax Num" [(ngModel)]="campaign.taxExmpNum"></ion-input>
-      </ion-item> -->
+    <ion-label>Registration Number</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.registrationNum"></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="addCampaign()">
-            Register
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+    <ion-label>Bank Name</ion-label>
+    <ion-item>
+      <ion-select [(ngModel)]="campaign.bankName" placeholder="Select">
+        <ion-select-option value="Maybank">Maybank</ion-select-option>
+        <ion-select-option value="CIMB Bank">CIMB Bank</ion-select-option>
+        <ion-select-option value="Public Bank Berhad">Public Bank Berhad</ion-select-option>
+        <ion-select-option value="RHB Bank">RHB Bank</ion-select-option>
+        <ion-select-option value="Hong Leong Bank">Hong Leong Bank</ion-select-option>
+        <ion-select-option value="AmBank">AmBank</ion-select-option>
+        <ion-select-option value="UOB Malaysia Bank">UOB Malaysia Bank</ion-select-option>
+        <ion-select-option value="Bank Rakyat">Bank Rakyat</ion-select-option>
+        <ion-select-option value="OCBC Bank Malaysia">OCBC Bank Malaysia</ion-select-option>
+        <ion-select-option value="HSBC Bank Malaysia">HSBC Bank Malaysia</ion-select-option>
+        <ion-select-option value="Affin Bank">Affin Bank</ion-select-option>
+        <ion-select-option value="Bank Islam Malaysia">Bank Islam Malaysia</ion-select-option>
+        <ion-select-option value="Standard Chartered Bank Malaysia">Standard Chartered Bank Malaysia</ion-select-option>
+        <ion-select-option value="CitiBank Malaysia">CitiBank Malaysia</ion-select-option>
+        <ion-select-option value="Bank Simpanan Nasional">Bank Simpanan Nasional</ion-select-option>
+        <ion-select-option value="Bank Muamalat Malaysia Berhad">Bank Muamalat Malaysia Berhad</ion-select-option>
+        <ion-select-option value="Alliance Bank">Alliance Bank</ion-select-option>
+        <ion-select-option value="Agrobank">Agrobank</ion-select-option>
+        <ion-select-option value="Al-Rajhi Malaysia">Al-Rajhi Malaysia</ion-select-option>
+        <ion-select-option value="MBSB Bank Berhad">MBSB Bank Berhad</ion-select-option>
+        <ion-select-option value="Co-op Bank Pertama">Co-op Bank Pertama</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+
+    <ion-label>Bank Account Num</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.bankAccNum"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-label>Donation Target</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="campaign.donationTarget"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-label>Start Date</ion-label>
+    <ion-item>
+      <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
+      <ion-input type="date" placeholder="Start Date" [(ngModel)]="campaign.endDate"></ion-input>
+    </ion-item>
+    <br>
+  </ion-list>
+
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="addCampaign()">
+        Register
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

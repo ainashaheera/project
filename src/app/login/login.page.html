@@ -3,8 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>Login</ion-title> -->
   </ion-toolbar>
+  <!-- CUBA TRY TEST
+  <div class="login-header ion-padding"></div> -->
 </ion-header>
 
 <!--<ion-toolbar>
@@ -35,7 +36,7 @@
         <ion-label><ion-icon name="lock-closed"></ion-icon></ion-label>
         <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
-
+      
       <ion-row>
         <ion-col>
           <ion-button size="small" (click)="login()" expand="block">
@@ -44,7 +45,7 @@
         </ion-col>
       </ion-row>
   
-      <!-- <ion-row>
+       <!-- <ion-row>
         <ion-col>
           <ion-button type="submit" color="danger" (click)="authService.GoogleAuth()" expand="block">
             Login with Google
@@ -56,7 +57,7 @@
         <ion-col>
           <span routerLink="/forgot-password">Forgot Password?</span>
         </ion-col>
-      </ion-row> -->
+      </ion-row>  -->
 
       <div class="ion-text-center">
         <ion-row>
@@ -68,3 +69,30 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+<!-- <ion-content>
+  <div class="center">
+
+    <div heading-column-lr>
+      <h1 big-heading>Login</h1>
+      <h2 small-heading>SIGN UP</h2>
+    </div>
+    
+    <ion-label>
+      Blablabla
+    </ion-label>
+
+    <ion-item transparent>
+      <img icon-small src="assets/dummy-user.png"/>
+      <ion-input [(ngModel)]="username" placeholder="Username" type="text"></ion-input>
+    </ion-item>
+    <ion-item transparent>
+      <img icon-small src="assets/dummy-user.png"/>
+      <ion-input [(ngModel)]="password" placeholder="Password" type="password"></ion-input>
+    </ion-item>
+
+    <div linespace></div>
+
+    <ion-button color="primary" class="ion-button-class" shape="round" fill="solid" size="large" expand="block" 
+  </div>
+</ion-content> -->

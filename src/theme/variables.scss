@@ -74,6 +74,11 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /**CUBA TRY TEST**/
+  --theme-color: #ffce00;
+  --theme-black: #000000;
+  --ion-color-gray: #d7d8da;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,7 +87,8 @@
    * -------------------------------------------
    */
 
-  body {
+  body 
+  {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -152,7 +158,8 @@
    * -------------------------------------------
    */
 
-  .ios body {
+  .ios body 
+  {
     --ion-background-color: #000000;
     --ion-background-color-rgb: 0,0,0;
 
@@ -191,7 +198,8 @@
    * -------------------------------------------
    */
 
-  .md body {
+  .md body 
+  {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 

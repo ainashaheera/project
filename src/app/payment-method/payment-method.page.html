@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="make-donation"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+    <!-- <ion-title>New Story</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Payment Method</ion-label>
+      </ion-list-header>
+    </div>
+  </ion-list>
+
+  <ion-list class="line-input">
+    <ion-radio-group>
+      <ion-item>
+        <ion-label>FPX</ion-label>
+        <ion-radio slot="start" color="success" value="fpx"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Visa/MasterCard</ion-label>
+        <ion-radio slot="start" color="success" value="visa"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <br>
+  </ion-list>
+
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" [routerLink]="['/success']">Select</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

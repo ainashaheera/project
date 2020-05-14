@@ -11,80 +11,65 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <div class="ion-text-center">
-        <ion-card-title>Create Fundraising Campaign</ion-card-title>
-        <ion-card-subtitle>New Fundraiser for Baju Sekolah Untuk Mereka</ion-card-subtitle>
-      </div>
-    </ion-card-header>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Create Fundraising Campaign</ion-label>
+      </ion-list-header>
+      <h4>New Fundraiser for Baju Sekolah Untuk Mereka</h4>
+    </div>
+  </ion-list>
 
-    <ion-card-content>
-      <ion-segment value="favourite">
-        A Fundraising Campaign is a way to help raise funds for an amazing projects that inspire you.
-      </ion-segment>
-    </ion-card-content>
+  <ion-list class="line-input">
 
-    <ion-card-content>
-      <!-- <ion-item>
-        <ion-label position="stacked"><strong>Title of Your Fundraising Campaign</strong></ion-label>
-        <ion-input [(ngModel)]="fundraiser.title"></ion-input>
-      </ion-item> -->
-      <ion-card-subtitle ion-text color="dark">
-        TITLE OF YOUR FUNDRAISING CAMPAIGN
-      </ion-card-subtitle>
+    <ion-label>Fundraising Campaign Title</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="fundraiser.title"></ion-input>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <ion-input placeholder="Fundraising Campaign Title" [(ngModel)]="fundraiser.title"></ion-input>
-      </ion-item>
+    <ion-label>Story</ion-label>
+    <ion-item>
+      <ion-textarea rows="3" placeholder="Why are you fundraising for this campaign?" [(ngModel)]="fundraiser.story"></ion-textarea>
+    </ion-item>
+    <br>
 
-      <ion-item>
-        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
-          <div *ngIf="!fundraiser.image">
-            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
-          </div>
-          <div *ngIf="fundraiser.image">
-          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="fundraiser.image"></ion-img>
+    <ion-label>Fundraising Campaign Photo</ion-label>
+    <ion-item>
+      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+        <div *ngIf="!fundraiser.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
         </div>
-      </ion-item> 
+        <div *ngIf="fundraiser.image">
+        <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="fundraiser.image"></ion-img>
+      </div>
+    </ion-item> 
+    <br>
 
-      <br>
-      <ion-card-subtitle ion-text color="dark">
-        STORY
-      </ion-card-subtitle>
+    <ion-label>Goal</ion-label>
+    <ion-item>
+      <ion-input placeholder="Target Funds (RM)" [(ngModel)]="fundraiser.goal"></ion-input>
+    </ion-item>
+    <br>
+  </ion-list>
 
-      <ion-item>
-        <ion-textarea rows="3" placeholder="Why are you fundraising for this campaign?" [(ngModel)]="fundraiser.story"></ion-textarea>
-      </ion-item>
+  <h5>FUNDRAISING CAMPAIGN PERIOD</h5>
+  <ion-list class="line-input">
 
-      <br>
-      <ion-card-subtitle ion-text color="dark">
-        GOAL
-      </ion-card-subtitle>
+    <ion-label>Fundraising Start Date</ion-label>
+    <ion-item>
+      <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
+      <ion-input type="date" placeholder="Fundraising Start Date" [(ngModel)]="fundraiser.periodS"></ion-input>
+    </ion-item>
+    <ion-text>Campaign end date: 06/11/2020</ion-text>
+    <br>
+  </ion-list>
 
-      <ion-item>
-        <ion-input placeholder="Target Funds (RM)" [(ngModel)]="fundraiser.goal"></ion-input>
-      </ion-item>
-
-      <br>
-      <ion-card-subtitle ion-text color="dark">
-        FUNDRAISING CAMPAIGN PERIOD
-      </ion-card-subtitle>
-
-      <ion-text>Fundraising Start Date</ion-text>
-      <ion-item>
-        <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
-        <ion-input type="date" placeholder="Fundraising Start Date" [(ngModel)]="fundraiser.periodS"></ion-input>
-      </ion-item>
-      <ion-text>Campaign end date: 23/7/2020</ion-text>
-
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="addFundraiser()">
-            Create Fundraiser
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="addFundraiser()">
+        Create Fundraiser
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

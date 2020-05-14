@@ -12,23 +12,42 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-list>
+  <ion-list font>
     <ion-list-header>
       <ion-label>Volunteers</ion-label>
     </ion-list-header>
 
     <ion-item *ngFor="let volunteer of (volunteers | async)">
-      <ion-thumbnail slot="start">
-        <!-- <img src="assets/default.png"> -->
-        <ion-img *ngIf="!!volunteer.image" class="profile-pic"  [src]="volunteer.image"></ion-img>
+      <ion-card>
+        <div class="ion-text-center">
+          <div [routerLink]="'/view-volunteer/'+volunteer.id">
+            <ion-img *ngIf="!!volunteer.image" class="profile-pic"  [src]="volunteer.image"></ion-img>
+          </div>
+          <ion-card-header>
+            <ion-card-title><h5>{{volunteer.volunteerName}}</h5></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h4>{{volunteer.description}}</h4>
+          </ion-card-content>
+          <ion-card-content>
+            <!-- <ion-button color="danger" *ngIf="isAdmin" expand="block" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button> -->
+            <ion-button color="warning" *ngIf="isAdmin" expand="block" [routerLink]="['/joinvlntr-list']">List of volunteer application</ion-button>
+            <ion-button color="success" *ngIf="isAdmin" expand="block" [routerLink]="'/update-volunteer/' + volunteer.id">Edit</ion-button>
+            <ion-button color="primary" *ngIf="isCustomer" expand="block" [routerLink]="['/joinvlntr-form']">Apply</ion-button>
+            <!-- <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteVolunteer()">Delete</ion-button> -->
+          </ion-card-content>
+        </div>
+      </ion-card>
+      <!-- <ion-thumbnail slot="start">
+        
       </ion-thumbnail>
 
       <ion-label>
-        <h2>{{volunteer.volunteerName}}</h2>
-        <p>{{volunteer.description}}</p>
+        <h2></h2>
+        <p></p>
       </ion-label>
       
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button>
+      <ion-button fill="outline" slot="end" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button> -->
     </ion-item>
   </ion-list>
   <ion-fab *ngIf="isAdmin" vertical="bottom" horizontal="end" slot="fixed">

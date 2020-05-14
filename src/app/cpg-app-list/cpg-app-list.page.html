@@ -15,21 +15,60 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-list>
+  <ion-list font>
     <ion-list-header>
       <ion-label>Campaigns</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let campaign of (campaigns | async)">
-      <ion-thumbnail slot="start">
-        <!-- <img src="assets/default.png"> -->
+      <ion-card>
+        <div class="ion-text-center">
+          <div [routerLink]="'/view-cpg-admin/'+campaign.id">
+            <ion-img *ngIf="!!campaign.image" class="profile-pic"  [src]="campaign.image"></ion-img>
+          </div>
+          <ion-card-header>
+            <ion-card-title><h5>{{campaign.campaignName}}</h5></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h4>{{campaign.description}}</h4>
+            <!-- <ion-button fill="outline" color="secondary" expand="block" [routerLink]="'/view-cpg-admin/'+campaign.id">Contact</ion-button> -->
+          </ion-card-content>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <div>
+                  <ion-label>
+                    <h4><strong>RM {{campaign.total}}</strong><br>
+                    of RM {{campaign.donationTarget}}</h4>
+                  </ion-label></div>
+              </ion-col>
+              <ion-col>
+                <div>
+                  <ion-label>
+                    <h4><strong>End on: </strong><br>{{campaign.endDate}}</h4>
+                  </ion-label></div>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-button color="primary" *ngIf="isCustomer" expand="block" [routerLink]="['/add-fundraiser']">Fundraise</ion-button>
+            <!-- <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="['/make-donation']">Donate</ion-button> -->
+            <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="'/make-donation/' + campaign.id">Donate</ion-button>
+            <ion-button color="warning" *ngIf="isAdmin" expand="block" [routerLink]="'/update-cpg-admin/' + campaign.id">Manage</ion-button>
+            <!-- <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteCampaign()">Delete</ion-button> -->
+          </ion-card-content>
+          <ion-card-content>
+            
+          </ion-card-content>
+        </div>
+      </ion-card>
+      <!-- <ion-thumbnail slot="start">
         <ion-img *ngIf="!!campaign.image" class="profile-pic"  [src]="campaign.image"></ion-img>
       </ion-thumbnail>
       <ion-label>
         <h2>{{campaign.campaignName}}</h2>
         <p>{{campaign.description}}</p>
       </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-cpg-admin/'+campaign.id">View</ion-button>
-      <!-- <img src="assets/fundraise.png" routerLink="['/add-fundraiser']"> -->
+      <ion-button fill="outline" slot="end" [routerLink]="'/view-cpg-admin/'+campaign.id">View</ion-button> -->
     </ion-item>
   </ion-list>
 

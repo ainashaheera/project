@@ -11,39 +11,44 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <div class="ion-text-center">
-        <ion-card-title>Update Volunteer Event</ion-card-title>
-      </div>
-    </ion-card-header>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Update Volunteer Event</ion-label>
+      </ion-list-header>
+    </div>
+  </ion-list>
 
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="stacked"><strong>Name</strong></ion-label>
-        <ion-input [(ngModel)]="volunteer.volunteerName"></ion-input>
-      </ion-item>
+  <ion-list class="line-input">
 
-      <ion-item>
-        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
-          <div *ngIf="!volunteer.image">
-            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
-          </div>
-          <div *ngIf="volunteer.image">
-          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="volunteer.image"></ion-img>
+    <ion-label>Volunteer Event Name</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="volunteer.volunteerName"></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-label>Description</ion-label>
+    <ion-item>
+      <ion-textarea rows="3" [(ngModel)]="volunteer.description"></ion-textarea>
+    </ion-item>
+    <br>
+
+    <ion-label>Photo</ion-label>
+    <ion-item>
+      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+        <div *ngIf="!volunteer.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
         </div>
-      </ion-item>  
-  
-      <ion-item>
-        <ion-label position="stacked"><strong>Description</strong></ion-label>
-        <ion-textarea rows="3" [(ngModel)]="volunteer.description"></ion-textarea>
-      </ion-item>
+        <div *ngIf="volunteer.image">
+        <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="volunteer.image"></ion-img>
+      </div>
+    </ion-item>
+    <br>
+  </ion-list>
 
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="updateVolunteer()">Update</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="updateVolunteer()">Update</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

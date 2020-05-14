@@ -1,0 +1,33 @@
+h5
+{
+    font-weight: 600;
+    font-size: 15px;
+    margin-left: 20px; 
+    margin-right: 20px;
+    border-bottom: 1px solid grey !important;
+}
+
+.line-input
+{
+    margin: 20px;
+    
+    ion-item
+    {
+        --border-color: transparent!important;
+        --highlight-height: 0;
+        border: 1px solid #dedede;
+        border-radius: 4px;
+
+        &.item-has-focus
+        {
+            border: 1px solid var (--ion-color-primary);
+        }
+    }
+
+    ion-label
+    {
+        color: #000000!important;
+        font-weight: 500;
+        font-size: 1rem!important;
+    }
+}

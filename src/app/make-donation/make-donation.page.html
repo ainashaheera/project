@@ -11,72 +11,44 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      <div class="ion-text-center">
-        <ion-card-title>Donate to:</ion-card-title>
-        <ion-card-subtitle>Baju Sekolah Untuk Mereka</ion-card-subtitle>
-      </div>
-    </ion-card-header>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Donate to:</ion-label>
+      </ion-list-header>
+      <h4>Baju Sekolah Untuk Mereka</h4>
+    </div>
+  </ion-list>
 
-    <ion-card-content>
-      <ion-segment value="favourite">
-        Your donation may help to ease these people.
-      </ion-segment>
-    </ion-card-content>
+  <ion-list class="line-input">
 
-    <ion-card-content>
-      <ion-card-subtitle ion-text color="dark">
-        Select an amount to donate:
-      </ion-card-subtitle>
+    <ion-label>Amount to Donate</ion-label>
+      <ion-radio-group value="25" [(ngModel)]="campaign.total">
+        <ion-item>
+          <ion-label>RM 25</ion-label>
+          <ion-radio slot="start" color="success" value="25"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>RM 50</ion-label>
+          <ion-radio slot="start" color="success" value="50"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>RM 100</ion-label>
+          <ion-radio slot="start" color="success" value="100"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Custom Amount</ion-label>
+          <ion-radio slot="start" color="success" value="custom"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    <br>
+  </ion-list>
 
-      <ion-item>
-        <ion-input placeholder="Name" [(ngModel)]="donation.name"></ion-input>
-      </ion-item>
-
-      <ion-list>
-        <ion-radio-group value="25" [(ngModel)]="donation.amount">
-          <ion-item>
-            <ion-label>RM 25</ion-label>
-            <ion-radio slot="start" color="success" value="25"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>RM 50</ion-label>
-            <ion-radio slot="start" color="success" value="50"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>RM 100</ion-label>
-            <ion-radio slot="start" color="success" value="100"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Custom Amount</ion-label>
-            <ion-radio slot="start" color="success" value="custom"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-
-      <!-- <br>
-      <ion-card-subtitle ion-text color="dark">
-        Leave a donation message:
-      </ion-card-subtitle>
-
-      <ion-item>
-        <ion-textarea rows="2" placeholder="Message"></ion-textarea>
-      </ion-item>
-
-      <br>
-      <ion-item>
-        <ion-label>Donate annonymously</ion-label>
-        <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
-      </ion-item> -->
-
-      <ion-row>
-        <ion-col>
-          <ion-button color="primary" expand="block" (click)="addDonation()">
-            Donate
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="updateCampaign()">
+        Donate
+      </ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

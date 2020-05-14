@@ -34,7 +34,7 @@ export class RegisterCpgPage implements OnInit
     phone: '',
     donationTarget: '',
     endDate: '',
-    total: ''
+    total: '0'
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 
@@ -82,7 +82,7 @@ export class RegisterCpgPage implements OnInit
 			this.http.post('https://upload.uploadcare.com/base/', data)
 			.subscribe(event => {
         const uuid = event.json().file
-        this.campaign.image=`https://ucarecdn.com/${uuid}/-/scale_crop/150x150/center/`;
+        this.campaign.image=`https://ucarecdn.com/${uuid}/-/scale_crop/400x400/center/`;
 				// this.mainuser.update({
 				// 	profilePic: uuid
 				// })
