@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>Register Campaign</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="fund-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Donate to:</ion-label>
+      </ion-list-header>
+      <h4>Fundraiser for Baju Sekolah Untuk Mereka</h4>
+    </div>
+  </ion-list>
+
+  <ion-list class="line-input">
+
+    <ion-label>Amount to Donate</ion-label>
+      <ion-radio-group value="25" [(ngModel)]="fundraiser.total">
+        <ion-item>
+          <ion-label>RM 25</ion-label>
+          <ion-radio slot="start" color="success" value="25"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>RM 50</ion-label>
+          <ion-radio slot="start" color="success" value="50"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>RM 100</ion-label>
+          <ion-radio slot="start" color="success" value="100"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Custom Amount</ion-label>
+          <ion-radio slot="start" color="success" value="custom"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    <br>
+  </ion-list>
+
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="updateFundraiser()">
+        Donate
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -40,16 +40,13 @@ const routes: Routes = [
   { path: 'add-fundraiser', loadChildren: () => import('./add-fundraiser/add-fundraiser.module').then( m => m.AddFundraiserPageModule) },
   { path: 'fund-list', loadChildren: () => import('./fund-list/fund-list.module').then( m => m.FundListPageModule) },
   { path: 'view-fund/:id', loadChildren: () => import('./view-fund/view-fund.module').then( m => m.ViewFundPageModule) },
-  
+  { path: 'update-fund/:id', loadChildren: () => import('./update-fund/update-fund.module').then( m => m.UpdateFundPageModule) },
+
   { path: 'make-donation/:id', loadChildren: () => import('./make-donation/make-donation.module').then( m => m.MakeDonationPageModule) },
-  {
-    path: 'payment-method',
-    loadChildren: () => import('./payment-method/payment-method.module').then( m => m.PaymentMethodPageModule)
-  },
-  {
-    path: 'success',
-    loadChildren: () => import('./success/success.module').then( m => m.SuccessPageModule)
-  },
+  { path: 'make-donation-fund/:id', loadChildren: () => import('./make-donation-fund/make-donation-fund.module').then( m => m.MakeDonationFundPageModule) },
+  { path: 'payment-method', loadChildren: () => import('./payment-method/payment-method.module').then( m => m.PaymentMethodPageModule) },
+  { path: 'success', loadChildren: () => import('./success/success.module').then( m => m.SuccessPageModule) },
+  { path: 'make-donation-fund', loadChildren: () => import('./make-donation-fund/make-donation-fund.module').then( m => m.MakeDonationFundPageModule) },
   
   
 ];

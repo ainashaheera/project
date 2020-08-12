@@ -1,9 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <!-- <ion-title>Event List</ion-title> -->
-    <!-- <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons> -->
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
@@ -15,23 +12,32 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-list>
+  <ion-list font>
     <ion-list-header>
       <ion-label>Events</ion-label>
     </ion-list-header>
 
     <ion-item *ngFor="let event of (events | async)">
-      <ion-thumbnail slot="start">
-        <!-- <img src="assets/default.png"> -->
-        <ion-img *ngIf="!!event.image" class="profile-pic"  [src]="event.image"></ion-img>
-      </ion-thumbnail>
-
-      <ion-label>
-        <h2>{{event.eventName}}</h2>
-        <p>{{event.description}}</p>
-      </ion-label>
-
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-event/'+event.id">View</ion-button>
+      <ion-card>
+        <div class="ion-text-center">
+          <div [routerLink]="'/view-event/'+event.id">
+            <ion-img *ngIf="!!event.image" class="profile-pic"  [src]="event.image"></ion-img>
+          </div>
+          <ion-card-header>
+            <ion-card-title><h5>{{event.eventName}}</h5></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h4>{{event.description}}</h4>
+          </ion-card-content>
+          <ion-card-content>
+            <!-- <ion-button color="danger" *ngIf="isAdmin" expand="block" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button> -->
+            <ion-button color="success" *ngIf="isAdmin" expand="block" [routerLink]="'/update-event/' + event.id">Edit</ion-button>
+            <ion-button *ngIf="isAdmin" color="danger" expand="block" (click)="deleteEvent()">Delete</ion-button>
+          </ion-card-content>
+        </div>
+      </ion-card>
+      
+      
     </ion-item>
   </ion-list>
 

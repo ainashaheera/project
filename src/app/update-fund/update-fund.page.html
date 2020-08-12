@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>Register Campaign</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="fund-list"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="onLogout()">
+      <ion-icon size="default" name="exit-outline" color="primary"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <div class="ion-text-center">
+      <ion-list-header>
+        <ion-label>Manage Fundraiser</ion-label>
+      </ion-list-header>
+    </div>
+  </ion-list>
+
+  <ion-list class="line-input">
+
+    <ion-label>Fundraising Campaign Title</ion-label>
+    <ion-item>
+      <ion-input [(ngModel)]="fundraiser.title" disabled></ion-input>
+    </ion-item>
+    <br>
+
+    <ion-label>Story</ion-label>
+    <ion-item>
+      <ion-textarea rows="3" placeholder="Why are you fundraising for this campaign?" [(ngModel)]="fundraiser.story" disabled></ion-textarea>
+    </ion-item>
+    <br>
+
+    <ion-label>Fundraising Campaign Photo</ion-label>
+    <ion-item>
+      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+        <div *ngIf="!fundraiser.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
+        </div>
+        <div *ngIf="fundraiser.image">
+        <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="fundraiser.image"></ion-img>
+      </div>
+    </ion-item> 
+    <br>
+
+    <ion-label>Goal</ion-label>
+    <ion-item>
+      <ion-input placeholder="Target Funds (RM)" [(ngModel)]="fundraiser.goal" disabled></ion-input>
+    </ion-item>
+    <br>
+  </ion-list>
+
+  <h5>FUNDRAISING CAMPAIGN PERIOD</h5>
+  <ion-list class="line-input">
+
+    <ion-label>Fundraising Start Date</ion-label>
+    <ion-item>
+      <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
+      <ion-input type="date" placeholder="Fundraising Start Date" [(ngModel)]="fundraiser.periodS" disabled></ion-input>
+    </ion-item>
+    <ion-text>Campaign end date: 06/11/2020</ion-text>
+    <br>
+  </ion-list>
+
+  <h5>ADMIN SECTION</h5>
+  <ion-list class="line-input">
+
+    <ion-label>Status (Approve or Reject)</ion-label>
+    <ion-item>
+      <ion-select placeholder="Select" [(ngModel)]="fundraiser.status">
+        <ion-select-option value="Approve">Approve</ion-select-option>
+        <ion-select-option value="Reject">Reject</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br>
+  </ion-list>
+
+  <ion-row>
+    <ion-col>
+      <ion-button color="primary" expand="block" (click)="updateFundraiser()">
+        Manage
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

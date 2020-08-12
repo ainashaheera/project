@@ -13,13 +13,17 @@ import { Http } from '@angular/http';
 })
 export class AddFundraiserPage implements OnInit 
 {
+  statusForm: false;
+
   fundraiser: Fundraiser =
   {
+    status: 'Waiting',
     title: '',
     story: '',
     goal: '',
     periodS: '',
-    image: ''
+    image: '',
+    total: '0'
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 

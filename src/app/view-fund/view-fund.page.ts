@@ -21,11 +21,13 @@ export class ViewFundPage implements OnInit, AfterViewInit
 
   fundraiser: Fundraiser =
   {
+    status: 'Waiting',
     title: '',
     story: '',
     goal: '',
     periodS: '',
-    image: ''
+    image: '',
+    total: '0'
   };
 
   constructor

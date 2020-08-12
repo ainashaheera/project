@@ -7,6 +7,7 @@ import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-fund-list',
   templateUrl: './fund-list.page.html',
@@ -14,14 +15,31 @@ import { Router } from '@angular/router';
 })
 export class FundListPage implements OnInit 
 {
+  sub: any;
+  username: string;
+  mainuser: AngularFirestoreDocument;
+  isAdmin: boolean = false;
+  isCustomer: boolean = true;
+
   private fundraisers: Observable<Fundraiser[]>
 
   constructor
   (
     private authService: AuthService,
     private frsService: FundraiserService,
-    private route: Router
-  ) { }
+    private route: Router,
+    private afs: AngularFirestore,
+    private user: UserService,
+  ) 
+  { 
+    this.mainuser=afs.doc(`users/${user.getUID()}`)
+    this.sub=this.mainuser.valueChanges().subscribe(event =>
+      {
+        this.username=event.username
+        this.isAdmin=event.isAdmin
+        this.isCustomer= event.isCustomer
+      })
+  }
 
   ngOnInit(): void 
   {

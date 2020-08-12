@@ -1,9 +1,6 @@
 <ion-header>
   <ion-toolbar>
     <!-- <ion-title>Story List</ion-title> -->
-    <!-- <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons> -->
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
@@ -15,23 +12,31 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-list>
+  <ion-list font>
     <ion-list-header>
       <ion-label>Stories</ion-label>
     </ion-list-header>
 
     <ion-item *ngFor="let story of (stories | async)">
-      <ion-thumbnail slot="start">
-        <!-- <img src="assets/default.png"> -->
-        <ion-img *ngIf="!!story.image" class="profile-pic"  [src]="story.image"></ion-img>
-      </ion-thumbnail>
-
-      <ion-label>
-        <h2>{{story.storyName}}</h2>
-        <p>{{story.description}}</p>
-      </ion-label>
-
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-story/'+story.id">View</ion-button>
+      <ion-card>
+        <div class="ion-text-center">
+          <div [routerLink]="'/view-story/'+story.id">
+            <ion-img *ngIf="!!story.image" class="profile-pic"  [src]="story.image"></ion-img>
+          </div>
+          <ion-card-header>
+            <ion-card-title><h5>{{story.storyName}}</h5></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h4>{{story.description}}</h4>
+          </ion-card-content>
+          <ion-card-content>
+            <!-- <ion-button color="danger" *ngIf="isAdmin" expand="block" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button> -->
+            <ion-button color="success" *ngIf="isAdmin" expand="block" [routerLink]="'/update-story/' + story.id">Edit</ion-button>
+            <ion-button *ngIf="isAdmin" color="danger" expand="block" (click)="deleteStory()">Delete</ion-button>
+          </ion-card-content>
+        </div>
+      </ion-card>
+      
     </ion-item>
   </ion-list>
 

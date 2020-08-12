@@ -15,26 +15,55 @@
 
 <ion-content>
   <ion-searchbar></ion-searchbar>
-  <ion-list>
+  <ion-list font>
     <ion-list-header>
       <ion-label>Fundraisers</ion-label>
     </ion-list-header>
+
     <ion-item *ngFor="let fundraiser of (fundraisers | async)">
-      <ion-thumbnail slot="start">
-        <!-- <img src="assets/default.png"> -->
-        <ion-img *ngIf="!!fundraiser.image" class="profile-pic"  [src]="fundraiser.image"></ion-img>
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{fundraiser.title}}</h2>
-        <p>{{fundraiser.story}}</p>
-      </ion-label>
-      <ion-button fill="outline" slot="end" [routerLink]="'/view-fund/'+fundraiser.id">View</ion-button>
+      <ion-card>
+        <div class="ion-text-center">
+          <div [routerLink]="'/view-fund/'+fundraiser.id">
+            <ion-img *ngIf="!!fundraiser.image" class="profile-pic"  [src]="fundraiser.image"></ion-img>
+          </div>
+          <ion-card-header>
+            <ion-card-title><h5>{{fundraiser.title}}</h5></ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h4>{{fundraiser.story}}</h4>
+            <!-- <ion-button fill="outline" color="secondary" expand="block" [routerLink]="'/view-cpg-admin/'+campaign.id">Contact</ion-button> -->
+          </ion-card-content>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <div>
+                  <ion-label>
+                    <h4><strong>RM {{fundraiser.total}}</strong><br>
+                    of RM {{fundraiser.goal}}</h4>
+                  </ion-label></div>
+              </ion-col>
+              <ion-col>
+                <div>
+                  <ion-label>
+                    <h4><strong>End on: </strong><br>06/11/2020</h4>
+                  </ion-label></div>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+          <ion-card-content>
+            <!-- <ion-button color="primary" *ngIf="isCustomer" expand="block" [routerLink]="['/add-fundraiser']">Fundraise</ion-button> -->
+            <!-- <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="['/make-donation']">Donate</ion-button> -->
+            <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="'/make-donation-fund/' + fundraiser.id">Donate</ion-button>
+            <ion-button color="warning" *ngIf="isAdmin" expand="block" [routerLink]="'/update-fund/' + fundraiser.id">Manage</ion-button>
+            <ion-button expand="block" *ngIf="isAdmin" color="danger" (click)="deleteCampaign()">Delete</ion-button>
+          </ion-card-content>
+        </div>
+      </ion-card>
+      
+      
+      
     </ion-item>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink]="'/add-fundraiser'">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  
 </ion-content>

@@ -23,12 +23,15 @@
       <ion-img *ngIf="!!fundraiser.image" class="profile-pic"  [src]="fundraiser.image"></ion-img>
       <p><strong>Goal: </strong>{{fundraiser.goal}}</p>
       <p><strong>Start Fundraising: </strong>{{fundraiser.periodS}}</p>
+      <p><strong>Total: </strong>{{fundraiser.total}}</p>
       <p><strong>Campaign End: </strong>2020-7-23</p>
+      <p *ngIf="isAdmin"><strong>Status: </strong>{{campaign.status}}</p>
       <br>
 
       <div class="ion-text-center">
         <!-- <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-fund/' + fund.id">Manage</ion-button> -->
-        <ion-button color="success" *ngIf="isCustomer" expand="block">Donate</ion-button>
+        <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="['/make-donation-fund']">Donate</ion-button>
+        <ion-button slot="start" *ngIf="isAdmin" color="warning" [routerLink]="'/update-fund/' + fundraiser.id">Manage</ion-button>
         <ion-button slot="end" *ngIf="isAdmin" color="danger" (click)="deleteFundraiser()">Delete</ion-button>
       </div>
     </ion-card-content>
