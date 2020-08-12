@@ -25,8 +25,6 @@ export class RegisterCpgPage implements OnInit
     campaignName: '',
     category: '',
     registrationNum: '',
-    //document: '',
-    //taxExmpNum: '',
     bankName: '',
     bankAccNum: '',
     website: '',

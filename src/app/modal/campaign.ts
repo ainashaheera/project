@@ -8,8 +8,6 @@ export interface Campaign
     campaignName: string;
     category: string;
     registrationNum: string;
-    //document: File;
-    //taxExmpNum: string;
     bankName: string;
     bankAccNum: string;
     website: string;
@@ -19,3 +17,5 @@ export interface Campaign
     endDate: string;
     total: string;  
 }
+
+
