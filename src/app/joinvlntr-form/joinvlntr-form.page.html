@@ -11,44 +11,46 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <div class="ion-text-center">
-      <ion-list-header *ngFor="let volunteer of (volunteers | async)">
-        <ion-label>Join {{volunteer.volunteerName}}</ion-label>
-      </ion-list-header>
-    </div>
-  </ion-list>
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="addJoinVlntr(validations_form.value)">
+    <ion-list>
+      <div class="ion-text-center">
+        <ion-list-header *ngFor="let volunteer of (volunteers | async)">
+          <ion-label>Join {{volunteer.volunteerName}}</ion-label>
+        </ion-list-header>
+      </div>
+    </ion-list>
 
-  <ion-list class="line-input">
+    <ion-list class="line-input">
 
-    <ion-label>Name</ion-label>
-    <ion-item>
-      <ion-input [(ngModel)]="joinvlntr.name"></ion-input>
-    </ion-item>
-    <br>
+      <ion-label>Name</ion-label>
+      <ion-item>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <br>
 
-    <ion-label>Email</ion-label>
-    <ion-item>
-      <ion-input [(ngModel)]="joinvlntr.email"></ion-input>
-    </ion-item>
-    <br>
+      <ion-label>Email</ion-label>
+      <ion-item>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <br>
 
-    <ion-label>Location</ion-label>
-    <ion-item>
-      <ion-input [(ngModel)]="joinvlntr.location"></ion-input>
-    </ion-item>
-    <br>
+      <ion-label>Location</ion-label>
+      <ion-item>
+        <ion-input formControlName="location"></ion-input>
+      </ion-item>
+      <br>
 
-    <ion-label>Phone</ion-label>
-    <ion-item>
-      <ion-input [(ngModel)]="joinvlntr.phone"></ion-input>
-    </ion-item>
-    <br>
-  </ion-list>
+      <ion-label>Phone</ion-label>
+      <ion-item>
+        <ion-input formControlName="phone"></ion-input>
+      </ion-item>
+      <br>
+    </ion-list>
 
-  <ion-row>
-    <ion-col>
-      <ion-button color="primary" expand="block" (click)="addJoinVlntr()">Apply</ion-button>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!validations_form.valid">Apply</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

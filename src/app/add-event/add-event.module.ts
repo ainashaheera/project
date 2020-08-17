@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AddEventPageRoutingModule } from './add-event-routing.module';
@@ -13,6 +13,7 @@ import { AddEventPage } from './add-event.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule, 
     AddEventPageRoutingModule
   ],
   declarations: [AddEventPage]

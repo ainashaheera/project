@@ -34,7 +34,7 @@
             <ion-button color="warning" *ngIf="isAdmin" expand="block" [routerLink]="['/joinvlntr-list']">List of volunteer application</ion-button>
             <ion-button color="success" *ngIf="isAdmin" expand="block" [routerLink]="'/update-volunteer/' + volunteer.id">Edit</ion-button>
             <ion-button color="primary" *ngIf="isCustomer" expand="block" [routerLink]="['/joinvlntr-form']">Apply</ion-button>
-            <ion-button expand="block" *ngIf="isAdmin" color="danger" (click)="deleteVolunteer()">Delete</ion-button>
+            <!-- <ion-button expand="block" *ngIf="isAdmin" color="danger" (click)="deleteVolunteer()">Delete</ion-button> -->
           </ion-card-content>
         </div>
       </ion-card>

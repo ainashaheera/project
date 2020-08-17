@@ -21,7 +21,8 @@ export class MakeDonationFundPage implements OnInit, AfterViewInit
     goal: '',
     periodS: '',
     image: '',
-    total: 0
+    total: 0,
+    donate: 0
   };
 
   private fundraisers: Observable<Fundraiser[]>
@@ -53,7 +54,8 @@ export class MakeDonationFundPage implements OnInit, AfterViewInit
   }
 
   updateFundraiser() {
-    this.fundraiser.total += this.fundraiser.total;
+    this.fundraiser.total = parseInt(this.fundraiser.total) + parseInt(this.fundraiser.donate);
+    console.log( this.fundraiser.total );
     this.frsService.updateFundraiser(this.fundraiser)
     .then(() => {
      this.router.navigate(['/payment-method']);

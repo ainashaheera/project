@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { Volunteer } from '../modal/Volunteer';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-volunteer',
@@ -13,6 +15,9 @@ import { Http } from '@angular/http';
 })
 export class AddVolunteerPage implements OnInit 
 {
+  validations_form: FormGroup;
+  errorMessage: string = '';
+
   volunteer: Volunteer =
   {
     //status: '',
@@ -33,16 +38,41 @@ export class AddVolunteerPage implements OnInit
     private vlService: VolunteerService,
     private toastCtrl: ToastController,
     private router: Router,
-    private http: Http
+    private formBuilder: FormBuilder,
+    private http: Http,
+    private alertController: AlertController,
   ) { }
 
-  ngOnInit() {}
-
-  addVolunteer ()
+  ngOnInit() 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+        volunteerName: new FormControl ('', Validators.compose([Validators.required])),
+        description: new FormControl ('', Validators.compose([Validators.required])),
+    })
+  }
+
+  async presentAlert(title: string, content: string) 
+  {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
+  addVolunteer (value)
+  {
+    this.volunteer.volunteerName=value.volunteerName;
+    this.volunteer.description=value.description;
+
     this.vlService.addVolunteer(this.volunteer)
     .then (() =>
     {
+      this.presentAlert('Done!', 'New volunteer event added!')
+
       this.router.navigate(['/vlntr-list']);
     }, err =>
     {});

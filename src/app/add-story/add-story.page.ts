@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { Story } from '../modal/Story';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-story',
@@ -13,6 +15,9 @@ import { Http } from '@angular/http';
 })
 export class AddStoryPage implements OnInit 
 {
+  validations_form: FormGroup;
+  errorMessage: string = '';
+
   story: Story=
   {
     description: '',
@@ -32,15 +37,40 @@ export class AddStoryPage implements OnInit
     private sService: StoryService,
     private toastCtrl: ToastController,
     private router: Router,
-    private http: Http
+    private formBuilder: FormBuilder,
+    private http: Http,
+    private alertController: AlertController,
   ) { }
 
-  ngOnInit() {}
-
-  addStory()
+  ngOnInit() 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+        storyName: new FormControl ('', Validators.compose([Validators.required])),
+        description: new FormControl ('', Validators.compose([Validators.required])),
+    })
+  }
+
+  async presentAlert(title: string, content: string) 
+  {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
+  addStory(value)
+  {
+    this.story.storyName=value.storyName;
+    this.story.description=value.description;
+
     this.sService.addStory(this.story).then(() =>
     {
+      this.presentAlert('Done!', 'New story added!')
+
       this.router.navigate(['/story-list']);
     }, err =>
     {

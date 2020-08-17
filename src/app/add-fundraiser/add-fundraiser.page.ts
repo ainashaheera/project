@@ -8,6 +8,8 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Campaign } from '../modal/campaign';
 import { FirebaseService } from '../services/firebase.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-fundraiser',
@@ -17,6 +19,8 @@ import { FirebaseService } from '../services/firebase.service';
 export class AddFundraiserPage implements OnInit 
 {
   statusForm: false;
+  validations_form: FormGroup;
+  errorMessage: string = '';
 
   fundraiser: Fundraiser =
   {
@@ -26,7 +30,8 @@ export class AddFundraiserPage implements OnInit
     goal: '',
     periodS: '',
     image: '',
-    total: 0
+    total: 0,
+    donate: 0
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 
@@ -44,19 +49,47 @@ export class AddFundraiserPage implements OnInit
     private toastCtrl: ToastController,
     private router: Router,
     private http: Http,
+    private formBuilder: FormBuilder,
     private fbService: FirebaseService,
+    private alertController: AlertController,
   ) { }
 
   ngOnInit(): void 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+        title: new FormControl ('', Validators.compose([Validators.required])),
+        story: new FormControl ('', Validators.compose([Validators.required])),
+        goal: new FormControl ('', Validators.compose([Validators.required])),
+        periodS: new FormControl ('', Validators.compose([Validators.required])),
+    })
+
     this.campaigns=this.fbService.getCampaigns();
   }
 
-  addFundraiser ()
+  async presentAlert(title: string, content: string) 
   {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
+  addFundraiser (value)
+  {
+    this.fundraiser.title=value.title;
+    this.fundraiser.story=value.story;
+    this.fundraiser.goal=value.goal;
+    this.fundraiser.periodS=value.periodS;
+
     this.frsService.addFundraiser(this.fundraiser)
     .then (() =>
     {
+      this.presentAlert('Done!', 'Please wait for confirmation from admin!')
+
       this.router.navigate(['/fund-list']);
     }, err =>
     {});

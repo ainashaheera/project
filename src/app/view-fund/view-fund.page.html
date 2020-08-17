@@ -23,7 +23,7 @@
       <ion-img *ngIf="!!fundraiser.image" class="profile-pic"  [src]="fundraiser.image"></ion-img>
       <p><strong>Goal: </strong>{{fundraiser.goal}}</p>
       <p><strong>Start Fundraising: </strong>{{fundraiser.periodS}}</p>
-      <p><strong>Total: </strong>{{fundraiser.total}}</p>
+      <p><strong>Total: RM</strong>{{fundraiser.total}}</p>
       <p *ngFor="let campaign of (campaigns | async)"><strong>Campaign End: </strong>{{campaign.endDate}}</p>
       <p *ngIf="isAdmin"><strong>Status: </strong>{{campaign.status}}</p>
       <br>

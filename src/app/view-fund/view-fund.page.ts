@@ -31,7 +31,8 @@ export class ViewFundPage implements OnInit, AfterViewInit
     goal: '',
     periodS: '',
     image: '',
-    total: 0
+    total: '',
+    donate: ''
   };
 
   private campaigns: Observable<Campaign[]>;

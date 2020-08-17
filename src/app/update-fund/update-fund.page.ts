@@ -20,7 +20,8 @@ export class UpdateFundPage implements OnInit, AfterViewInit
     goal: '',
     periodS: '',
     image: '',
-    total: 0
+    total: 0,
+    donate: 0
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 
@@ -51,7 +52,7 @@ export class UpdateFundPage implements OnInit, AfterViewInit
     }
   }
 
-  updateCampaign() {
+  updateFundraiser() {
     this.frsService.updateFundraiser(this.fundraiser)
     .then(() => {
      this.router.navigate(['/fund-list']);

@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { Event } from '../modal/Event';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
+import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-event',
@@ -13,6 +15,9 @@ import { Http } from '@angular/http';
 })
 export class AddEventPage implements OnInit 
 {
+  validations_form: FormGroup;
+  errorMessage: string = '';
+
   event: Event=
   {
     description: '',
@@ -32,15 +37,40 @@ export class AddEventPage implements OnInit
     private eService: EventsService,
     private toastCtrl: ToastController,
     private router: Router,
-    private http: Http
+    private http: Http,
+    private formBuilder: FormBuilder,
+    private alertController: AlertController,
   ) { }
 
-  ngOnInit() {}
-
-  addEvent()
+  ngOnInit() 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+        eventName: new FormControl ('', Validators.compose([Validators.required])),
+        description: new FormControl ('', Validators.compose([Validators.required])),
+    })
+  }
+
+  async presentAlert(title: string, content: string) 
+  {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
+  addEvent(value)
+  {
+    this.event.eventName=value.eventName;
+    this.event.description=value.description;
+
     this.eService.addEvent(this.event).then(() =>
     {
+      this.presentAlert('Done!', 'New event added!')
+      
       this.router.navigate(['/event-list']);
     }, err =>
     {

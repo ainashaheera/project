@@ -7,6 +7,8 @@ import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
 import { Volunteer } from '../modal/Volunteer';
 import { VolunteerService } from '../services/volunteer.service';
+import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-joinvlntr-form',
@@ -15,6 +17,9 @@ import { VolunteerService } from '../services/volunteer.service';
 })
 export class JoinvlntrFormPage implements OnInit 
 {
+  validations_form: FormGroup;
+  errorMessage: string = '';
+
   joinvlntr: JoinVlntr =
   {
     status: 'Waiting',
@@ -33,19 +38,47 @@ export class JoinvlntrFormPage implements OnInit
     private activatedRoute: ActivatedRoute,
     private joinvlntrService: JoinVlntrService,
     private toastCtrl: ToastController,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+        name: new FormControl ('', Validators.compose([Validators.required])),
+        email: new FormControl ('', Validators.compose([Validators.required])),
+        location: new FormControl ('', Validators.compose([Validators.required])),
+        phone: new FormControl ('', Validators.compose([Validators.required])),
+    })
+
     this.volunteers=this.fbService.getVolunteers();
   }
 
-  addJoinVlntr ()
+  async presentAlert(title: string, content: string) 
   {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
+  addJoinVlntr (value)
+  {
+    this.joinvlntr.name=value.name;
+    this.joinvlntr.email=value.email;
+    this.joinvlntr.location=value.location;
+    this.joinvlntr.phone=value.phone;
+
     this.joinvlntrService.addJoinVlntr(this.joinvlntr)
     .then (() =>
     {
+      this.presentAlert('Done!', 'Please wait for confirmation from admin!')
+
       this.router.navigate(['/vlntr-list']);
     }, err =>
     {});

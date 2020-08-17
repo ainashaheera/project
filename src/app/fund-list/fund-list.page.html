@@ -55,7 +55,7 @@
             <!-- <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="['/make-donation']">Donate</ion-button> -->
             <ion-button color="success" *ngIf="isCustomer" expand="block" [routerLink]="'/make-donation-fund/' + fundraiser.id">Donate</ion-button>
             <ion-button color="warning" *ngIf="isAdmin" expand="block" [routerLink]="'/update-fund/' + fundraiser.id">Manage</ion-button>
-            <ion-button expand="block" *ngIf="isAdmin" color="danger" (click)="deleteCampaign()">Delete</ion-button>
+            <!-- <ion-button expand="block" *ngIf="isAdmin" color="danger" (click)="deleteFundraiser()">Delete</ion-button> -->
           </ion-card-content>
         </div>
       </ion-card>

@@ -11,45 +11,47 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <div class="ion-text-center">
-      <ion-list-header>
-        <ion-label>New Story</ion-label>
-      </ion-list-header>
-    </div>
-  </ion-list>
-
-  <ion-list class="line-input">
-
-    <ion-label>Story Name</ion-label>
-    <ion-item>
-      <ion-input [(ngModel)]="story.storyName"></ion-input>
-    </ion-item>
-    <br>
-
-    <ion-label>Description</ion-label>
-    <ion-item>
-      <ion-textarea rows="3" [(ngModel)]="story.description"></ion-textarea>
-    </ion-item>
-    <br>
-
-    <ion-label>Photo</ion-label>
-    <ion-item>
-      <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
-        <div *ngIf="!story.image">
-          <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
-        </div>
-        <div *ngIf="story.image">
-        <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="story.image"></ion-img>
+  <form class="form" [formGroup]="validations_form"  (ngSubmit)="addStory(validations_form.value)">
+    <ion-list>
+      <div class="ion-text-center">
+        <ion-list-header>
+          <ion-label>New Story</ion-label>
+        </ion-list-header>
       </div>
-    </ion-item>
-    <br>
-  </ion-list>
+    </ion-list>
 
-  <ion-row>
-    <ion-col>
-      <ion-button color="primary" expand="block" (click)="addStory()">Add</ion-button>
-    </ion-col>
-  </ion-row>
+    <ion-list class="line-input">
+
+      <ion-label>Story Name</ion-label>
+      <ion-item>
+        <ion-input formControlName="storyName"></ion-input>
+      </ion-item>
+      <br>
+
+      <ion-label>Description</ion-label>
+      <ion-item>
+        <ion-textarea rows="3" formControlName="description"></ion-textarea>
+      </ion-item>
+      <br>
+
+      <ion-label>Photo</ion-label>
+      <ion-item>
+        <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)"/>
+          <div *ngIf="!story.image">
+            <ion-img class="profile-pic" (click)="updateProfilePic()" src="assets/default.png"></ion-img>
+          </div>
+          <div *ngIf="story.image">
+          <ion-img class="profile-pic" (click)="updateProfilePic()" [src]="story.image"></ion-img>
+        </div>
+      </ion-item>
+      <br>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [disabled]="!validations_form.valid">Add</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
 

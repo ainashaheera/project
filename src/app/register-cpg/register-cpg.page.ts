@@ -5,7 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { Campaign } from '../modal/Campaign';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
-
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register-cpg',
@@ -15,6 +16,8 @@ import { Http } from '@angular/http';
 export class RegisterCpgPage implements OnInit 
 {
   statusForm: false;
+  validations_form: FormGroup;
+  errorMessage: string = '';
 
   campaign: Campaign =
   {
@@ -48,17 +51,62 @@ export class RegisterCpgPage implements OnInit
     private fbService: FirebaseService,
     private toastCtrl: ToastController,
     private router: Router,
-    private http: Http
+    private formBuilder: FormBuilder,
+    private http: Http,
+    private alertController: AlertController,
     // status='waiting'
   ) { }
 
-  ngOnInit() {}
-
-  addCampaign ()
+  ngOnInit() 
   {
+    this.validations_form = this.formBuilder.group
+    ({
+        campaignName: new FormControl ('', Validators.compose([Validators.required])),
+        description: new FormControl ('', Validators.compose([Validators.required])),
+        category: new FormControl ('', Validators.compose([Validators.required])),
+        organizationName: new FormControl ('', Validators.compose([Validators.required])),
+        website: new FormControl ('', Validators.compose([Validators.required])),
+        phone: new FormControl ('', Validators.compose([Validators.required])),
+        email: new FormControl ('', Validators.compose([Validators.required])),
+        registrationNum: new FormControl ('', Validators.compose([Validators.required])),
+        bankName: new FormControl ('', Validators.compose([Validators.required])),
+        bankAccNum: new FormControl ('', Validators.compose([Validators.required])),
+        donationTarget: new FormControl ('', Validators.compose([Validators.required])),
+        endDate: new FormControl ('', Validators.compose([Validators.required])),
+    })
+  }
+
+  async presentAlert(title: string, content: string) 
+  {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
+  addCampaign (value)
+  {
+    this.campaign.campaignName=value.campaignName;
+    this.campaign.description=value.description;
+    this.campaign.category=value.category;
+    this.campaign.organizationName=value.organizationName;
+    this.campaign.website=value.website;
+    this.campaign.phone=value.phone;
+    this.campaign.email=value.email;
+    this.campaign.registrationNum=value.registrationNum;
+    this.campaign.bankName=value.bankName;
+    this.campaign.bankAccNum=value.bankAccNum;
+    this.campaign.donationTarget=value.donationTarget;
+    this.campaign.endDate=value.endDate;
+
     this.fbService.addCampaign(this.campaign)
     .then (() =>
     {
+      this.presentAlert('Done!', 'Please wait for confirmation from admin!')
+
       this.router.navigate(['/dashboard']);
     }, err =>
     {});

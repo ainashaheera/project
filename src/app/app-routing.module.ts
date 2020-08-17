@@ -46,7 +46,6 @@ const routes: Routes = [
   { path: 'make-donation-fund/:id', loadChildren: () => import('./make-donation-fund/make-donation-fund.module').then( m => m.MakeDonationFundPageModule) },
   { path: 'payment-method', loadChildren: () => import('./payment-method/payment-method.module').then( m => m.PaymentMethodPageModule) },
   { path: 'success', loadChildren: () => import('./success/success.module').then( m => m.SuccessPageModule) },
-  { path: 'make-donation-fund', loadChildren: () => import('./make-donation-fund/make-donation-fund.module').then( m => m.MakeDonationFundPageModule) },
   
   
 ];
