@@ -21,6 +21,7 @@
     <ion-card-content>
       <ion-img *ngIf="!!volunteer.image" class="profile-pic"  [src]="volunteer.image"></ion-img>
       <p align="justify">{{volunteer.description}}</p>
+      <p *ngIf="isAdmin"><strong>Status: </strong>{{campaign.status}}</p>
       <br>
 
       <div class="ion-text-center">

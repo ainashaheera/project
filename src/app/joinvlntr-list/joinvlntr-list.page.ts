@@ -4,6 +4,8 @@ import { JoinVlntr } from '../modal/join-vlntr';
 import { JoinVlntrService } from '../services/join-vlntr.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Volunteer } from '../modal/Volunteer';
+import { VolunteerService } from '../services/volunteer.service';
 
 @Component({
   selector: 'app-joinvlntr-list',
@@ -13,9 +15,11 @@ import { Router } from '@angular/router';
 export class JoinvlntrListPage implements OnInit 
 {
   private joinvlntrs: Observable<JoinVlntr[]>;
+  private volunteers: Observable<Volunteer[]>;
 
   constructor
   (
+    private fbService: VolunteerService,
     private authService: AuthService,
     private jvService: JoinVlntrService,
     private route: Router
@@ -24,6 +28,7 @@ export class JoinvlntrListPage implements OnInit
   ngOnInit(): void 
   {
     this.joinvlntrs=this.jvService.getJoinVlntrs();
+    this.volunteers=this.fbService.getVolunteers();
   }
 
   onLogout()

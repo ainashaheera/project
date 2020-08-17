@@ -7,5 +7,5 @@ export interface Fundraiser
     goal: string;
     periodS: string;
     image?: any;
-    total: string;
+    total: number;
 }

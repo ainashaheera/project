@@ -20,7 +20,7 @@ export class UpdateFundPage implements OnInit, AfterViewInit
     goal: '',
     periodS: '',
     image: '',
-    total: ''
+    total: 0
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 

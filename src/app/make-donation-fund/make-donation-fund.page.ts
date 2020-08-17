@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FundraiserService } from '../services/fundraiser.service';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-make-donation-fund',
@@ -20,8 +21,10 @@ export class MakeDonationFundPage implements OnInit, AfterViewInit
     goal: '',
     periodS: '',
     image: '',
-    total: '0'
+    total: 0
   };
+
+  private fundraisers: Observable<Fundraiser[]>
 
   constructor
   (
@@ -32,7 +35,9 @@ export class MakeDonationFundPage implements OnInit, AfterViewInit
     private http: Http
   ) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+    this.fundraisers=this.frsService.getFundraisers();
   }
 
   ngAfterViewInit(): void
@@ -47,7 +52,8 @@ export class MakeDonationFundPage implements OnInit, AfterViewInit
     }
   }
 
-  updateCampaign() {
+  updateFundraiser() {
+    this.fundraiser.total += this.fundraiser.total;
     this.frsService.updateFundraiser(this.fundraiser)
     .then(() => {
      this.router.navigate(['/payment-method']);

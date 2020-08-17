@@ -5,6 +5,9 @@ import { JoinVlntrService } from '../services/join-vlntr.service';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
+import { Observable } from 'rxjs';
+import { Volunteer } from '../modal/Volunteer';
+import { VolunteerService } from '../services/volunteer.service';
 
 @Component({
   selector: 'app-view-joinvlntr',
@@ -28,6 +31,8 @@ export class ViewJoinvlntrPage implements OnInit, AfterViewInit
     phone: '',
   };
 
+  private volunteers: Observable<Volunteer[]>;
+
   constructor
   (
     private activatedRoute: ActivatedRoute,
@@ -36,6 +41,7 @@ export class ViewJoinvlntrPage implements OnInit, AfterViewInit
     private authService: AuthService,
     private afs: AngularFirestore,
     private user: UserService,
+    private fbService: VolunteerService,
   ) 
   {
     this.mainuser=afs.doc(`users/${user.getUID()}`)
@@ -47,7 +53,10 @@ export class ViewJoinvlntrPage implements OnInit, AfterViewInit
       })
   }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    this.volunteers=this.fbService.getVolunteers();
+  }
 
   ngAfterViewInit(): void
   {

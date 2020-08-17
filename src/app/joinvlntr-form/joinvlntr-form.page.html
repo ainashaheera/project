@@ -13,8 +13,8 @@
 <ion-content padding>
   <ion-list>
     <div class="ion-text-center">
-      <ion-list-header>
-        <ion-label>Join Volunteer</ion-label>
+      <ion-list-header *ngFor="let volunteer of (volunteers | async)">
+        <ion-label>Join {{volunteer.volunteerName}}</ion-label>
       </ion-list-header>
     </div>
   </ion-list>

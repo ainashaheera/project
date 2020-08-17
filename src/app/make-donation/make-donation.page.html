@@ -16,14 +16,16 @@
       <ion-list-header>
         <ion-label>Donate to:</ion-label>
       </ion-list-header>
-      <h4>Baju Sekolah Untuk Mereka</h4>
+      <ion-list-header *ngFor="let campaign of (campaigns | async)">
+        <h4>{{campaign.campaignName}}</h4>
+      </ion-list-header>
     </div>
   </ion-list>
 
   <ion-list class="line-input">
 
     <ion-label>Amount to Donate</ion-label>
-      <ion-radio-group value="25" [(ngModel)]="campaign.total">
+      <ion-radio-group value="25" [(ngModel)]="campaign.donate">
         <ion-item>
           <ion-label>RM 25</ion-label>
           <ion-radio slot="start" color="success" value="25"></ion-radio>

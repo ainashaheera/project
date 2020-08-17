@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { JoinVlntr } from '../modal/join-vlntr';
 import { AuthService } from '../auth.service';
+import { Observable } from 'rxjs';
+import { Volunteer } from '../modal/Volunteer';
+import { VolunteerService } from '../services/volunteer.service';
 
 @Component({
   selector: 'app-joinvlntr-form',
@@ -21,8 +24,11 @@ export class JoinvlntrFormPage implements OnInit
     phone: '',
   };
 
+  private volunteers: Observable<Volunteer[]>;
+
   constructor
   (
+    private fbService: VolunteerService,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private joinvlntrService: JoinVlntrService,
@@ -30,7 +36,10 @@ export class JoinvlntrFormPage implements OnInit
     private router: Router
   ) { }
 
-  ngOnInit() {}
+  ngOnInit(): void 
+  {
+    this.volunteers=this.fbService.getVolunteers();
+  }
 
   addJoinVlntr ()
   {

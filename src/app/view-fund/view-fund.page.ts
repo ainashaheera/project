@@ -5,6 +5,10 @@ import { FundraiserService } from '../services/fundraiser.service';
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
+import { Observable } from 'rxjs';
+import { Campaign } from '../modal/campaign';
+import { FirebaseService } from '../services/firebase.service';
+
 
 @Component({
   selector: 'app-view-fund',
@@ -27,8 +31,10 @@ export class ViewFundPage implements OnInit, AfterViewInit
     goal: '',
     periodS: '',
     image: '',
-    total: '0'
+    total: 0
   };
+
+  private campaigns: Observable<Campaign[]>;
 
   constructor
   (
@@ -37,7 +43,8 @@ export class ViewFundPage implements OnInit, AfterViewInit
     private user: UserService,
     private activatedRoute: ActivatedRoute,
     private frsService: FundraiserService,
-    private router: Router
+    private router: Router,
+    private fbService: FirebaseService,
   ) 
   {
     this.mainuser=afs.doc(`users/${user.getUID()}`)
@@ -49,7 +56,10 @@ export class ViewFundPage implements OnInit, AfterViewInit
       })
   }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    this.campaigns=this.fbService.getCampaigns();
+  }
 
   ngAfterViewInit(): void
   {

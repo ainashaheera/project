@@ -32,7 +32,8 @@ export class RegisterCpgPage implements OnInit
     phone: '',
     donationTarget: '',
     endDate: '',
-    total: '0'
+    donate: 0,
+    total: 0
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 

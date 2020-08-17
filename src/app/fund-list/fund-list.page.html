@@ -44,8 +44,8 @@
               </ion-col>
               <ion-col>
                 <div>
-                  <ion-label>
-                    <h4><strong>End on: </strong><br>06/11/2020</h4>
+                  <ion-label *ngFor="let campaign of (campaigns | async)">
+                    <h4><strong>End on: </strong><br>{{campaign.endDate}}</h4>
                   </ion-label></div>
               </ion-col>
             </ion-row>

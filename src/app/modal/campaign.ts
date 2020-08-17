@@ -15,7 +15,8 @@ export interface Campaign
     phone: string;
     donationTarget: string;
     endDate: string;
-    total: string;  
+    donate: any;
+    total: any;  
 }
 
 

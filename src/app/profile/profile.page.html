@@ -55,7 +55,7 @@
       </ion-row> -->
     </ion-card-content>
 
-    <ion-card-content>
+    <ion-card-content *ngIf="isCustomer">
       <ion-list>
         <ion-list-header>
           <ion-label>Campaigns</ion-label>
@@ -73,21 +73,38 @@
       </ion-list>
     </ion-card-content>
 
-    <ion-card-content>
+    <ion-card-content *ngIf="isCustomer">
       <ion-list>
         <ion-list-header>
-          <ion-label>Volunteers</ion-label>
+          <ion-label>Fundraisers</ion-label>
         </ion-list-header>
-        <!-- <ion-item *ngFor="let campaign of (campaigns | async)"> -->
-        <ion-item>
+        <ion-item *ngFor="let fundraiser of (fundraisers | async)">
           <!-- <ion-thumbnail slot="start">
             <img src="assets/default.png">
           </ion-thumbnail> -->
           <ion-label>
-            <h2>Volunteer Teacher</h2>
-            <p>Waiting</p>
+            <h2>{{fundraiser.title}}</h2>
+            <p>{{fundraiser.status}}</p>
           </ion-label>
-          <ion-button fill="outline" slot="end">View</ion-button>
+          <ion-button fill="outline" slot="end" [routerLink]="'/view-fund/'+fundraiser.id">View</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="isCustomer">
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Volunteers</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let volunteer of (volunteers | async)">
+          <!-- <ion-thumbnail slot="start">
+            <img src="assets/default.png">
+          </ion-thumbnail> -->
+          <ion-label>
+            <h2>{{volunteer.volunteerName}}</h2>
+            <p *ngFor="let joinvlntr of (joinvlntrs | async)">{{joinvlntr.status}}</p>
+          </ion-label>
+          <ion-button fill="outline" slot="end" [routerLink]="'/view-volunteer/'+volunteer.id">View</ion-button>
         </ion-item>
       </ion-list>
     </ion-card-content>

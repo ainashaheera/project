@@ -5,6 +5,9 @@ import { ToastController } from '@ionic/angular';
 import { Fundraiser } from '../modal/Fundraiser';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
+import { Campaign } from '../modal/campaign';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-add-fundraiser',
@@ -23,13 +26,15 @@ export class AddFundraiserPage implements OnInit
     goal: '',
     periodS: '',
     image: '',
-    total: '0'
+    total: 0
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 
   {
 		nativeElement: HTMLInputElement
   }
+
+  private campaigns: Observable<Campaign[]>;
 
   constructor
   (
@@ -38,10 +43,14 @@ export class AddFundraiserPage implements OnInit
     private frsService: FundraiserService,
     private toastCtrl: ToastController,
     private router: Router,
-    private http: Http
+    private http: Http,
+    private fbService: FirebaseService,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit(): void 
+  {
+    this.campaigns=this.fbService.getCampaigns();
+  }
 
   addFundraiser ()
   {

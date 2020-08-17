@@ -24,7 +24,7 @@
       <p><strong>Goal: </strong>{{fundraiser.goal}}</p>
       <p><strong>Start Fundraising: </strong>{{fundraiser.periodS}}</p>
       <p><strong>Total: </strong>{{fundraiser.total}}</p>
-      <p><strong>Campaign End: </strong>2020-7-23</p>
+      <p *ngFor="let campaign of (campaigns | async)"><strong>Campaign End: </strong>{{campaign.endDate}}</p>
       <p *ngIf="isAdmin"><strong>Status: </strong>{{campaign.status}}</p>
       <br>
 

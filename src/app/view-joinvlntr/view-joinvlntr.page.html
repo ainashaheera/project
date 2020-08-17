@@ -14,7 +14,7 @@
   <ion-card>
     <ion-card-header>
       <div class="ion-text-center">
-        <ion-card-title>Volunteer Teacher</ion-card-title>
+        <ion-card-title *ngFor="let volunteer of (volunteers | async)">{{volunteer.volunteerName}}</ion-card-title>
       </div>
     </ion-card-header>
 

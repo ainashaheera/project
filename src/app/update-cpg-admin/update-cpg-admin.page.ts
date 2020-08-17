@@ -30,7 +30,8 @@ export class UpdateCpgAdminPage implements OnInit, AfterViewInit
     phone: '',
     donationTarget: '',
     endDate: '',
-    total: ''
+    donate: 0,
+    total: 0
   };
 
   @ViewChild('fileBtn', {static: false}) fileBtn: 

@@ -16,7 +16,9 @@
       <ion-list-header>
         <ion-label>Create Fundraising Campaign</ion-label>
       </ion-list-header>
-      <h4>New Fundraiser for Baju Sekolah Untuk Mereka</h4>
+      <ion-item *ngFor="let campaign of (campaigns | async)">
+        <h4>New Fundraiser for {{campaign.campaignName}}</h4>
+      </ion-item>
     </div>
   </ion-list>
 
@@ -61,8 +63,10 @@
       <ion-label><ion-icon name="calendar"></ion-icon></ion-label>
       <ion-input type="date" placeholder="Fundraising Start Date" [(ngModel)]="fundraiser.periodS"></ion-input>
     </ion-item>
-    <ion-text>Campaign end date: 06/11/2020</ion-text>
-    <br>
+    <ion-text *ngFor="let campaign of (campaigns | async)">
+      <ion-text>Campaign end date: {{campaign.endDate}}</ion-text>
+    </ion-text>
+      <br>
   </ion-list>
 
   <ion-row>

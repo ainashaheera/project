@@ -6,6 +6,8 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Campaign } from '../modal/campaign';
+import { FirebaseService } from '../services/firebase.service';
 
 
 @Component({
@@ -22,6 +24,7 @@ export class FundListPage implements OnInit
   isCustomer: boolean = true;
 
   private fundraisers: Observable<Fundraiser[]>
+  private campaigns: Observable<Campaign[]>;
 
   constructor
   (
@@ -30,6 +33,7 @@ export class FundListPage implements OnInit
     private route: Router,
     private afs: AngularFirestore,
     private user: UserService,
+    private fbService: FirebaseService,
   ) 
   { 
     this.mainuser=afs.doc(`users/${user.getUID()}`)
@@ -44,6 +48,7 @@ export class FundListPage implements OnInit
   ngOnInit(): void 
   {
     this.fundraisers=this.frsService.getFundraisers();
+    this.campaigns=this.fbService.getCampaigns();
   }
 
   onLogout()

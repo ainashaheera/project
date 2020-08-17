@@ -16,8 +16,8 @@
 <ion-content>
   <ion-searchbar></ion-searchbar>
   <ion-list>
-    <ion-list-header>
-      <ion-label>Volunteer Teacher</ion-label>
+    <ion-list-header *ngFor="let volunteer of (volunteers | async)">
+      <ion-label>{{volunteer.volunteerName}}</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let joinvlntr of (joinvlntrs | async)">
       <!-- <ion-thumbnail slot="start">

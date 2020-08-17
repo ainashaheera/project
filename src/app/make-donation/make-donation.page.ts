@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
 import { AuthService } from '../auth.service';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-make-donation',
@@ -30,8 +31,11 @@ export class MakeDonationPage implements OnInit, AfterViewInit
     phone: '',
     donationTarget: '',
     endDate: '',
-    total: '0'
+    donate: '',
+    total: ''
   };
+
+  private campaigns: Observable<Campaign[]>;
 
   constructor
   (
@@ -42,7 +46,10 @@ export class MakeDonationPage implements OnInit, AfterViewInit
     private http: Http
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    this.campaigns=this.fbService.getCampaigns();
+  }
 
   ngAfterViewInit(): void
   {
@@ -57,6 +64,8 @@ export class MakeDonationPage implements OnInit, AfterViewInit
   }
 
   updateCampaign() {
+    this.campaign.total = parseInt(this.campaign.total) + parseInt(this.campaign.donate);
+    console.log( this.campaign.total );
     this.fbService.updateCampaign(this.campaign)
     .then(() => {
      this.router.navigate(['/payment-method']);
